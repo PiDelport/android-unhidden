@@ -1,0 +1,7 @@
+syntax: regexp
+
+# Local-only
+^(tests/)?local\.properties$
+
+# Build results
+^(tests/)?(bin|gen)/

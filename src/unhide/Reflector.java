@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.util.Log;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 /**
  * Reflection helpers.
@@ -41,6 +42,21 @@ public class Reflector {
                     return null;
                 }
             } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Return cls.getMethod(name) or null.
+     */
+    public static Method _method(Class<?> cls, String name, Class<?>... parameterTypes) {
+        if (cls != null && name != null) {
+            try {
+                return cls.getMethod(name, parameterTypes);
+            } catch(NoSuchMethodException e) {
                 return null;
             }
         } else {

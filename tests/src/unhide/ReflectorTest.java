@@ -3,6 +3,8 @@ package unhide;
 import android.net.Uri;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import junit.framework.TestCase;
 
@@ -18,6 +20,11 @@ public class ReflectorTest extends TestCase {
 
         public static final Uri psf_Uri = Uri.parse("http://example.com/");
         public static final Uri psf_nullUri = null;
+
+        public static final String upper(String s) {
+            return s.toUpperCase();
+        }
+
     }
 
     // Reflector._class()
@@ -64,6 +71,33 @@ public class ReflectorTest extends TestCase {
         assertNotNull(field);
         assertEquals(String.class, field.getType());
         assertEquals("public static final java.lang.String unhide.ReflectorTest$Target.psf_String", field.toString());
+    }
+
+    // Reflector._method()
+
+    public void testMethod_null() {
+        for (Class<?> cls : new Class<?>[] {null, Object.class, Target.class}) {
+            for (String name : new String[] {null, "", "spam"}) {
+                assertNull(
+                        "expected null for class <" + cls + ">, method <" + name + ">",
+                        Reflector._method(cls, name));
+                assertNull(
+                        "expected null for class <" + cls + ">, method <" + name + ">",
+                        Reflector._method(cls, name, int.class, String.class));
+            }
+        }
+    }
+
+    public void testMethod_Target_upper() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Method method = Reflector._method(Target.class, "upper", String.class);
+        assertNotNull(method);
+        assertEquals("public static final java.lang.String unhide.ReflectorTest$Target.upper(java.lang.String)", method.toString());
+        assertEquals("FOO", method.invoke(null, "foo"));
+    }
+
+    public void testMethod_wrongsignature() {
+        assertNull(Reflector._method(Target.class, "upper"));
+        assertNull(Reflector._method(Target.class, "upper", int.class));
     }
 
     // Reflector._int()

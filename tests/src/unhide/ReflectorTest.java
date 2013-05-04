@@ -54,12 +54,14 @@ public class ReflectorTest extends TestCase {
 
     public void testField_Target_int() {
         Field field = Reflector._field(Target.class, "psf_int");
+        assertNotNull(field);
         assertEquals(int.class, field.getType());
         assertEquals("public static final int unhide.ReflectorTest$Target.psf_int", field.toString());
     }
 
     public void testField_Target_String() {
         Field field = Reflector._field(Target.class, "psf_String");
+        assertNotNull(field);
         assertEquals(String.class, field.getType());
         assertEquals("public static final java.lang.String unhide.ReflectorTest$Target.psf_String", field.toString());
     }

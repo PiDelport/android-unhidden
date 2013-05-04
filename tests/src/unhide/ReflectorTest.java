@@ -43,7 +43,7 @@ public class ReflectorTest extends TestCase {
     // Reflector._field()
 
     public void testField_null() {
-        for (Class<?> cls : new Class[] {null, Object.class, Target.class}) {
+        for (Class<?> cls : new Class<?>[] {null, Object.class, Target.class}) {
             for (String name : new String[] {null, "", "spam"}) {
                 assertNull(
                         "expected null for class <" + cls + ">, name <" + name + ">",
@@ -67,7 +67,7 @@ public class ReflectorTest extends TestCase {
     // Reflector._int()
 
     public void testInt_null() {
-        for (Class<?> cls : new Class[] {null, Object.class, Target.class}) {
+        for (Class<?> cls : new Class<?>[] {null, Object.class, Target.class}) {
             for (String name : new String[] {null, "", "spam"}) {
                 assertEquals(
                         "expected default of -123 for class <" + cls + ">, name <" + name + ">",
@@ -90,7 +90,7 @@ public class ReflectorTest extends TestCase {
     // Reflector._String()
 
     public void testString_null() {
-        for (Class<?> cls : new Class[] {null, Object.class, Target.class}) {
+        for (Class<?> cls : new Class<?>[] {null, Object.class, Target.class}) {
             for (String name : new String[] {null, "", "spam"}) {
                 assertNull(
                         "expected null for class <" + cls + ">, name <" + name + ">",

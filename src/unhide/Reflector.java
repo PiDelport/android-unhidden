@@ -4,7 +4,9 @@ import android.net.Uri;
 import android.util.Log;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
 /**
  * Reflection helpers.
@@ -88,6 +90,53 @@ public class Reflector {
             }
         } else {
             return null;
+        }
+    }
+
+    /**
+     * Return <code>method.invoke(null, Object... args)</code>.
+     *
+     * Like {@link _invokeStaticUnchecked()}, but propagate all {@link
+     * InvocationTargetException}s, allowing the caller to unwrap and rethrow
+     * them correctly.
+     */
+    public static <RT> RT _invokeStaticChecked(Class<RT> rType, Method method, Object... args) throws InvocationTargetException {
+        // Check preconditions...
+        if (method == null) {
+            throw new IllegalArgumentException("missing method");
+        }
+        if (! Modifier.isStatic(method.getModifiers())) {
+            throw new IllegalArgumentException("method is not static: " + method);
+        }
+        if (rType.isPrimitive()) {
+            throw new IllegalArgumentException("Don't call this with a primitive return type: use the corresponding boxed type instead.");
+        }
+        if (! rType.isAssignableFrom(autobox(method.getReturnType()))) {
+            throw new IllegalArgumentException("expected method return type " + rType + ", got " + method.getReturnType());
+        }
+        // Try to invoke.
+        Object result;
+        try {
+            result = method.invoke(null, args);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException("method not accessible: " + method, e);
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("type error while invoking " + method, e);
+        }
+        return rType.cast(result);
+    }
+
+    /**
+     * Return <code>method.invoke(null, Object... args)</code>.
+     *
+     * Like {@link _invokeStaticChecked()}, but wrap all {@link
+     * InvocationTargetException}s in a {@link RuntimeException}.
+     */
+    public static <RT> RT _invokeStaticUnchecked(Class<RT> rType, Method method, Object... args) {
+        try {
+            return _invokeStaticChecked(rType, method, args);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException("exception while invoking " + method, e.getCause());
         }
     }
 

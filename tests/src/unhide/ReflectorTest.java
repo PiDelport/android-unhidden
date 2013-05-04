@@ -122,6 +122,20 @@ public class ReflectorTest extends TestCase {
         assertNull(Reflector._method(Target.class, "upper", int.class));
     }
 
+    // Reflector._invokeChecked()
+
+    public void testInvokeChecked() throws NoSuchMethodException, InvocationTargetException {
+        Method method = Target.class.getMethod("upper", String.class);
+        assertEquals("FOO", Reflector._invokeStaticChecked(String.class, method, "foo"));
+    }
+
+    // Reflector._invokeUnchecked()
+
+    public void testInvokeUnchecked() throws NoSuchMethodException {
+        Method method = Target.class.getMethod("upper", String.class);
+        assertEquals("FOO", Reflector._invokeStaticUnchecked(String.class, method, "foo"));
+    }
+
     // Reflector._int()
 
     public void testInt_null() {

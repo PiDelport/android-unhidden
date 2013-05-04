@@ -1,5 +1,6 @@
 package unhide.android.provider;
 
+import android.os.Build;
 import android.test.MoreAsserts;
 
 import junit.framework.TestCase;
@@ -26,7 +27,11 @@ public class TelephonyTest extends TestCase {
         assertNotNull(Telephony.TextBasedSmsColumns.ADDRESS);
         assertNotNull(Telephony.TextBasedSmsColumns.PERSON_ID);
         assertNotNull(Telephony.TextBasedSmsColumns.DATE);
-        assertNotNull(Telephony.TextBasedSmsColumns.DATE_SENT);  // XXX: not in api level 10
+        if (Build.VERSION_CODES.ICE_CREAM_SANDWICH <= Build.VERSION.SDK_INT) {
+            assertNotNull(Telephony.TextBasedSmsColumns.DATE_SENT);
+        } else {
+            assertNull(Telephony.TextBasedSmsColumns.DATE_SENT);
+        }
         assertNotNull(Telephony.TextBasedSmsColumns.READ);
         assertNotNull(Telephony.TextBasedSmsColumns.SEEN);
 

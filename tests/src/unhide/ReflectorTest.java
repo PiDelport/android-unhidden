@@ -13,6 +13,28 @@ import junit.framework.TestCase;
  */
 public class ReflectorTest extends TestCase {
 
+    /**
+     * Test Reflector.autobox().
+     */
+    public void testAutobox_primitive() {
+        assertSame(Byte.class, Reflector.autobox(byte.class));
+        assertSame(Short.class, Reflector.autobox(short.class));
+        assertSame(Integer.class, Reflector.autobox(int.class));
+        assertSame(Long.class, Reflector.autobox(long.class));
+        assertSame(Float.class, Reflector.autobox(float.class));
+        assertSame(Double.class, Reflector.autobox(double.class));
+        assertSame(Character.class, Reflector.autobox(char.class));
+        assertSame(Boolean.class, Reflector.autobox(boolean.class));
+    }
+
+    /**
+     * Reflector.autobox() should preserve non-primitive classes.
+     */
+    public void testAutobox_nonprimitive() {
+        assertSame(Object.class, Reflector.autobox(Object.class));
+        assertSame(String.class, Reflector.autobox(String.class));
+    }
+
     public static class Target {
         public static final int psf_int = 5;
         public static final String psf_String = "fnord";

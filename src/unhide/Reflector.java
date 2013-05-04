@@ -1,5 +1,6 @@
 package unhide;
 
+import android.net.Uri;
 import android.util.Log;
 
 import java.lang.reflect.Field;
@@ -95,6 +96,13 @@ public class Reflector {
     public static int _int(Class<?> cls, String name, int defaultValue) {
         Integer value = _fieldValueAsType(Integer.class, cls, name);
         return (value != null) ? value : defaultValue;
+    }
+
+    /**
+     * Return the specified static Uri field value, or null.
+     */
+    public static Uri _Uri(Class<?> cls, String name) {
+        return _fieldValueAsType(Uri.class, cls, name);
     }
 
 }

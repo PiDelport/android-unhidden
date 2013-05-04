@@ -1,5 +1,7 @@
 package unhide;
 
+import android.net.Uri;
+
 import java.lang.reflect.Field;
 
 import junit.framework.TestCase;
@@ -13,6 +15,9 @@ public class ReflectorTest extends TestCase {
         public static final int psf_int = 5;
         public static final String psf_String = "fnord";
         public static final String psf_nullString = null;
+
+        public static final Uri psf_Uri = Uri.parse("http://example.com/");
+        public static final Uri psf_nullUri = null;
     }
 
     // Reflector._class()
@@ -77,6 +82,9 @@ public class ReflectorTest extends TestCase {
 
     public void testInt_wrongtype() {
         assertEquals(-123, Reflector._int(Target.class, "psf_String", -123));
+        assertEquals(-123, Reflector._int(Target.class, "psf_nullString", -123));
+        assertEquals(-123, Reflector._int(Target.class, "psf_Uri", -123));
+        assertEquals(-123, Reflector._int(Target.class, "psf_nullUri", -123));
     }
 
     // Reflector._String()
@@ -97,7 +105,22 @@ public class ReflectorTest extends TestCase {
     }
 
     public void testString_wrongtype() {
+        assertEquals(null, Reflector._String(Target.class, "psf_Uri"));
+        assertEquals(null, Reflector._String(Target.class, "psf_nullUri"));
         assertEquals(null, Reflector._String(Target.class, "psf_int"));
+    }
+
+    // Reflector._Uri()
+
+    public void testUri_Target() {
+        assertSame(Target.psf_Uri, Reflector._Uri(Target.class, "psf_Uri"));
+        assertSame(null, Reflector._Uri(Target.class, "psf_nullUri"));
+    }
+
+    public void testUri_wrongtype() {
+        assertEquals(null, Reflector._Uri(Target.class, "psf_String"));
+        assertEquals(null, Reflector._Uri(Target.class, "psf_nullString"));
+        assertEquals(null, Reflector._Uri(Target.class, "psf_int"));
     }
 
 }

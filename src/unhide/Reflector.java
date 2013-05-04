@@ -48,16 +48,30 @@ public class Reflector {
     }
 
     /**
-     * Return the specified static String field value, or null.
+     * Return the specified static field value, cast to the given type, or null.
+     *
+     * NOTE: Passing a primitive type as <code>type</code> will not work, due
+     * to {@link Field.get()}'s boxing. To access a primitive type field, call
+     * this with the corresponding boxed type instead.
      */
-    public static String _String(Class<?> cls, String name) {
+    public static <T> T _fieldValueAsType(Class<T> type, Class<?> cls, String name) {
+        if (type.isPrimitive()) {
+            throw new IllegalArgumentException("Don't call this with primitive types: use the corresponding boxed type instead.");
+        }
+
         Field field = _field(cls, name);
         if (field != null) {
+            Object value;
             try {
-                Object value = field.get(null);
-                return (String) value;
+                value = field.get(null);
             } catch(IllegalAccessException e) {
-                Log.wtf(Reflector.class.getName(), "error getting String " + cls + "." + name + ": " + e.toString());
+                Log.wtf(Reflector.class.getName(), "error getting " + cls + "." + name + " as type " + type + ": " + e.toString());
+                return null;
+            }
+            if (type.isInstance(value)) {
+                return type.cast(value);
+            } else {
+                Log.wtf(Reflector.class.getName(), "type error getting " + cls + "." + name + ": expected " + type + ", got " + value.getClass());
                 return null;
             }
         } else {
@@ -66,20 +80,18 @@ public class Reflector {
     }
 
     /**
+     * Return the specified static String field value, or null.
+     */
+    public static String _String(Class<?> cls, String name) {
+        return _fieldValueAsType(String.class, cls, name);
+    }
+
+    /**
      * Return the specified static int value, or the default value.
      */
     public static int _int(Class<?> cls, String name, int defaultValue) {
-        Field field = _field(cls, name);
-        if (field != null) {
-            try {
-                return field.getInt(null);
-            } catch(IllegalAccessException e) {
-                Log.wtf(Reflector.class.getName(), "error getting int " + cls + "." + name + ": " + e.toString());
-                return defaultValue;
-            }
-        } else {
-            return defaultValue;
-        }
+        Integer value = _fieldValueAsType(Integer.class, cls, name);
+        return (value != null) ? value : defaultValue;
     }
 
 }

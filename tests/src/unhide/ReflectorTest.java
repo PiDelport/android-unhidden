@@ -74,6 +74,10 @@ public class ReflectorTest extends TestCase {
         assertEquals(5, Reflector._int(Target.class, "psf_int", -123));
     }
 
+    public void testInt_wrongtype() {
+        assertEquals(-123, Reflector._int(Target.class, "psf_String", -123));
+    }
+
     // Reflector._String()
 
     public void testString_null() {
@@ -88,6 +92,10 @@ public class ReflectorTest extends TestCase {
 
     public void testString_Target() {
         assertEquals("fnord", Reflector._String(Target.class, "psf_String"));
+    }
+
+    public void testString_wrongtype() {
+        assertEquals(null, Reflector._String(Target.class, "psf_int"));
     }
 
 }

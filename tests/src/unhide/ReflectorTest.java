@@ -9,9 +9,10 @@ import junit.framework.TestCase;
  */
 public class ReflectorTest extends TestCase {
 
-    public class Target {
+    public static class Target {
         public static final int psf_int = 5;
         public static final String psf_String = "fnord";
+        public static final String psf_nullString = null;
     }
 
     // Reflector._class()
@@ -92,6 +93,7 @@ public class ReflectorTest extends TestCase {
 
     public void testString_Target() {
         assertEquals("fnord", Reflector._String(Target.class, "psf_String"));
+        assertEquals(null, Reflector._String(Target.class, "psf_nullString"));
     }
 
     public void testString_wrongtype() {

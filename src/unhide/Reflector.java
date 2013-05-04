@@ -68,7 +68,10 @@ public class Reflector {
                 Log.wtf(Reflector.class.getName(), "error getting " + cls + "." + name + " as type " + type + ": " + e.toString());
                 return null;
             }
-            if (type.isInstance(value)) {
+            if (value == null) {
+                return null;  // value is actually null.
+            } else
+                if (type.isInstance(value)) {
                 return type.cast(value);
             } else {
                 Log.wtf(Reflector.class.getName(), "type error getting " + cls + "." + name + ": expected " + type + ", got " + value.getClass());

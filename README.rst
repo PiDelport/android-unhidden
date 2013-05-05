@@ -1,14 +1,33 @@
-==============================
-unhide.android.provider README
-==============================
+============================================================
+Android Unhidden: Convenient access to Android's hidden APIs
+============================================================
 
 The goal of this library is to provide safe and convenient access to
 non-public, "hidden", but useful Android framework APIs, using reflection.
 
+
+Usage
+=====
+
+Using the wrapped libraries is as simple as adding a ``unhide.`` prefix to the
+import you want to use.
+
+For example, instead of::
+
+    import android.provider.Telephony;
+
+use::
+
+    import unhide.android.provider.Telephony;
+
+
 Supported APIs
 ==============
 
-* `android.provider.Telephony`
+Currently, the following APIs are supported:
+
+* ``android.provider.Telephony``
+
 
 Running the tests
 =================

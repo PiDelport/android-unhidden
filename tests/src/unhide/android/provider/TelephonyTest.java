@@ -27,7 +27,7 @@ public class TelephonyTest extends TestCase {
         assertNotNull(Telephony.TextBasedSmsColumns.ADDRESS);
         assertNotNull(Telephony.TextBasedSmsColumns.PERSON_ID);
         assertNotNull(Telephony.TextBasedSmsColumns.DATE);
-        if (Build.VERSION_CODES.ICE_CREAM_SANDWICH <= Build.VERSION.SDK_INT) {
+        if (Build.VERSION_CODES.ICE_CREAM_SANDWICH <= Build.VERSION.SDK_INT) {  // API level 14 and above
             assertNotNull(Telephony.TextBasedSmsColumns.DATE_SENT);
         } else {
             assertNull(Telephony.TextBasedSmsColumns.DATE_SENT);
@@ -146,14 +146,14 @@ public class TelephonyTest extends TestCase {
         assertNotNull(Telephony.Sms.Intents.SMS_RECEIVED_ACTION);
         assertNotNull(Telephony.Sms.Intents.DATA_SMS_RECEIVED_ACTION);
         assertNotNull(Telephony.Sms.Intents.WAP_PUSH_RECEIVED_ACTION);
-        if (Build.VERSION_CODES.ICE_CREAM_SANDWICH <= Build.VERSION.SDK_INT) {
+        if (Build.VERSION_CODES.ICE_CREAM_SANDWICH <= Build.VERSION.SDK_INT) {  // API level 14 and above
             assertNotNull(Telephony.Sms.Intents.SMS_CB_RECEIVED_ACTION);
             assertNotNull(Telephony.Sms.Intents.SMS_EMERGENCY_CB_RECEIVED_ACTION);
         } else {
             assertNull(Telephony.Sms.Intents.SMS_CB_RECEIVED_ACTION);
             assertNull(Telephony.Sms.Intents.SMS_EMERGENCY_CB_RECEIVED_ACTION);
         }
-        if (Build.VERSION_CODES.JELLY_BEAN <= Build.VERSION.SDK_INT) {
+        if (Build.VERSION_CODES.JELLY_BEAN <= Build.VERSION.SDK_INT) {  // API level 16 and above
             assertNotNull(Telephony.Sms.Intents.SMS_SERVICE_CATEGORY_PROGRAM_DATA_RECEIVED_ACTION);
         } else {
             assertNull(Telephony.Sms.Intents.SMS_SERVICE_CATEGORY_PROGRAM_DATA_RECEIVED_ACTION);
@@ -175,7 +175,7 @@ public class TelephonyTest extends TestCase {
         MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.BaseMmsColumns.MESSAGE_BOX_OUTBOX);
 
         assertNotNull(Telephony.BaseMmsColumns.DATE);
-        if (Build.VERSION_CODES.ICE_CREAM_SANDWICH <= Build.VERSION.SDK_INT) {
+        if (Build.VERSION_CODES.ICE_CREAM_SANDWICH <= Build.VERSION.SDK_INT) {  // API level 14 and above
             assertNotNull(Telephony.BaseMmsColumns.DATE_SENT);
         } else {
             assertNull(Telephony.BaseMmsColumns.DATE_SENT);
@@ -183,7 +183,7 @@ public class TelephonyTest extends TestCase {
         assertNotNull(Telephony.BaseMmsColumns.MESSAGE_BOX);
         assertNotNull(Telephony.BaseMmsColumns.READ);
         assertNotNull(Telephony.BaseMmsColumns.SEEN);
-        if (Build.VERSION_CODES.JELLY_BEAN_MR1 <= Build.VERSION.SDK_INT) {
+        if (Build.VERSION_CODES.JELLY_BEAN_MR1 <= Build.VERSION.SDK_INT) {  // API level 17 and above
             assertNotNull(Telephony.BaseMmsColumns.TEXT_ONLY);
         } else {
             assertNull(Telephony.BaseMmsColumns.TEXT_ONLY);
@@ -491,7 +491,7 @@ public class TelephonyTest extends TestCase {
         assertNotNull(Telephony.Carriers.NUMERIC);
         assertNotNull(Telephony.Carriers.AUTH_TYPE);
         assertNotNull(Telephony.Carriers.TYPE);
-        if (Build.VERSION_CODES.ICE_CREAM_SANDWICH <= Build.VERSION.SDK_INT) {
+        if (Build.VERSION_CODES.ICE_CREAM_SANDWICH <= Build.VERSION.SDK_INT) {  // API level 14 and above
             assertNotNull(Telephony.Carriers.INACTIVE_TIMER);
             assertNotNull(Telephony.Carriers.ENABLED);
             assertNotNull(Telephony.Carriers.CLASS);
@@ -505,7 +505,7 @@ public class TelephonyTest extends TestCase {
             assertNull(Telephony.Carriers.ROAMING_PROTOCOL);
         }
         assertNotNull(Telephony.Carriers.CURRENT);
-        if (Build.VERSION_CODES.ICE_CREAM_SANDWICH <= Build.VERSION.SDK_INT) {
+        if (Build.VERSION_CODES.ICE_CREAM_SANDWICH <= Build.VERSION.SDK_INT) {  // API level 14 and above
             assertNotNull(Telephony.Carriers.CARRIER_ENABLED);
             assertNotNull(Telephony.Carriers.BEARER);
         } else {
@@ -515,7 +515,7 @@ public class TelephonyTest extends TestCase {
     }
 
     public void testCellBroadcasts() {
-        if (Build.VERSION_CODES.JELLY_BEAN <= Build.VERSION.SDK_INT) {
+        if (Build.VERSION_CODES.JELLY_BEAN <= Build.VERSION.SDK_INT) {  // API level 16 and above
             assertNotNull(Telephony.CellBroadcasts._cls);
 
             assertNotNull(Telephony.CellBroadcasts.CONTENT_URI);
@@ -550,7 +550,7 @@ public class TelephonyTest extends TestCase {
     }
 
     public void testIntents() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {  // preceding API level 17
             assertNotNull(Telephony.Intents._cls);
 
             assertNotNull(Telephony.Intents.SECRET_CODE_ACTION);

@@ -146,8 +146,13 @@ public class TelephonyTest extends TestCase {
         assertNotNull(Telephony.Sms.Intents.SMS_RECEIVED_ACTION);
         assertNotNull(Telephony.Sms.Intents.DATA_SMS_RECEIVED_ACTION);
         assertNotNull(Telephony.Sms.Intents.WAP_PUSH_RECEIVED_ACTION);
-        assertNotNull(Telephony.Sms.Intents.SMS_CB_RECEIVED_ACTION);
-        assertNotNull(Telephony.Sms.Intents.SMS_EMERGENCY_CB_RECEIVED_ACTION);
+        if (Build.VERSION_CODES.ICE_CREAM_SANDWICH <= Build.VERSION.SDK_INT) {
+            assertNotNull(Telephony.Sms.Intents.SMS_CB_RECEIVED_ACTION);
+            assertNotNull(Telephony.Sms.Intents.SMS_EMERGENCY_CB_RECEIVED_ACTION);
+        } else {
+            assertNull(Telephony.Sms.Intents.SMS_CB_RECEIVED_ACTION);
+            assertNull(Telephony.Sms.Intents.SMS_EMERGENCY_CB_RECEIVED_ACTION);
+        }
         assertNotNull(Telephony.Sms.Intents.SIM_FULL_ACTION);
         assertNotNull(Telephony.Sms.Intents.SMS_REJECTED_ACTION);
 
@@ -165,7 +170,11 @@ public class TelephonyTest extends TestCase {
         MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.BaseMmsColumns.MESSAGE_BOX_OUTBOX);
 
         assertNotNull(Telephony.BaseMmsColumns.DATE);
-        assertNotNull(Telephony.BaseMmsColumns.DATE_SENT);
+        if (Build.VERSION_CODES.ICE_CREAM_SANDWICH <= Build.VERSION.SDK_INT) {
+            assertNotNull(Telephony.BaseMmsColumns.DATE_SENT);
+        } else {
+            assertNull(Telephony.BaseMmsColumns.DATE_SENT);
+        }
         assertNotNull(Telephony.BaseMmsColumns.MESSAGE_BOX);
         assertNotNull(Telephony.BaseMmsColumns.READ);
         assertNotNull(Telephony.BaseMmsColumns.SEEN);
@@ -472,14 +481,27 @@ public class TelephonyTest extends TestCase {
         assertNotNull(Telephony.Carriers.NUMERIC);
         assertNotNull(Telephony.Carriers.AUTH_TYPE);
         assertNotNull(Telephony.Carriers.TYPE);
-        assertNotNull(Telephony.Carriers.INACTIVE_TIMER);
-        assertNotNull(Telephony.Carriers.ENABLED);
-        assertNotNull(Telephony.Carriers.CLASS);
-        assertNotNull(Telephony.Carriers.PROTOCOL);
-        assertNotNull(Telephony.Carriers.ROAMING_PROTOCOL);
+        if (Build.VERSION_CODES.ICE_CREAM_SANDWICH <= Build.VERSION.SDK_INT) {
+            assertNotNull(Telephony.Carriers.INACTIVE_TIMER);
+            assertNotNull(Telephony.Carriers.ENABLED);
+            assertNotNull(Telephony.Carriers.CLASS);
+            assertNotNull(Telephony.Carriers.PROTOCOL);
+            assertNotNull(Telephony.Carriers.ROAMING_PROTOCOL);
+        } else {
+            assertNull(Telephony.Carriers.INACTIVE_TIMER);
+            assertNull(Telephony.Carriers.ENABLED);
+            assertNull(Telephony.Carriers.CLASS);
+            assertNull(Telephony.Carriers.PROTOCOL);
+            assertNull(Telephony.Carriers.ROAMING_PROTOCOL);
+        }
         assertNotNull(Telephony.Carriers.CURRENT);
-        assertNotNull(Telephony.Carriers.CARRIER_ENABLED);
-        assertNotNull(Telephony.Carriers.BEARER);
+        if (Build.VERSION_CODES.ICE_CREAM_SANDWICH <= Build.VERSION.SDK_INT) {
+            assertNotNull(Telephony.Carriers.CARRIER_ENABLED);
+            assertNotNull(Telephony.Carriers.BEARER);
+        } else {
+            assertNull(Telephony.Carriers.CARRIER_ENABLED);
+            assertNull(Telephony.Carriers.BEARER);
+        }
     }
 
     public void testIntents() {

@@ -16,6 +16,14 @@
 
 package unhide.android.provider;
 
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.BaseColumns;
+
+import java.lang.reflect.Method;
+
 import unhide.Reflector;
 
 /**
@@ -160,6 +168,111 @@ public final class Telephony {
          * <P>Type: TEXT</P>
          */
         public static final String META_DATA = Reflector._String(_cls, "META_DATA");
+    }
+
+    /**
+     * Contains all text based SMS messages.
+     */
+    public static final class Sms implements BaseColumns, TextBasedSmsColumns {
+
+        public static final Class<?> _cls = Reflector._class("android.provider.Telephony$Sms");
+
+        public static final Cursor query(ContentResolver cr, String[] projection) {
+            return Reflector._invokeStaticUnchecked(Cursor.class, _query_2, cr, projection);
+        }
+        public static final Method _query_2 = Reflector._method(_cls, "query", ContentResolver.class, String[].class);
+
+        public static final Cursor query(ContentResolver cr, String[] projection,
+                String where, String orderBy) {
+            return Reflector._invokeStaticUnchecked(Cursor.class, _query_4, cr, projection, where, orderBy);
+        }
+        public static final Method _query_4 = Reflector._method(_cls, "query", ContentResolver.class, String[].class,
+                String.class, String.class);
+
+        /**
+         * The content:// style URL for this table
+         */
+        public static final Uri CONTENT_URI = Reflector._Uri(_cls, "CONTENT_URI");
+
+        /**
+         * The default sort order for this table
+         */
+        public static final String DEFAULT_SORT_ORDER = Reflector._String(_cls, "DEFAULT_SORT_ORDER");
+
+        /**
+         * Add an SMS to the given URI.
+         *
+         * @param resolver the content resolver to use
+         * @param uri the URI to add the message to
+         * @param address the address of the sender
+         * @param body the body of the message
+         * @param subject the psuedo-subject of the message
+         * @param date the timestamp for the message
+         * @param read true if the message has been read, false if not
+         * @param deliveryReport true if a delivery report was requested, false if not
+         * @return the URI for the new message
+         */
+        public static Uri addMessageToUri(ContentResolver resolver,
+                Uri uri, String address, String body, String subject,
+                Long date, boolean read, boolean deliveryReport) {
+            return Reflector._invokeStaticUnchecked(Uri.class, _addMessageToUri_8, resolver,
+                uri, address, body, subject,
+                date, read, deliveryReport);
+        }
+        public static final Method _addMessageToUri_8 = Reflector._method(_cls, "addMessageToUri", ContentResolver.class,
+                Uri.class, String.class, String.class, String.class,
+                Long.class, boolean.class, boolean.class);
+
+        /**
+         * Add an SMS to the given URI with thread_id specified.
+         *
+         * @param resolver the content resolver to use
+         * @param uri the URI to add the message to
+         * @param address the address of the sender
+         * @param body the body of the message
+         * @param subject the psuedo-subject of the message
+         * @param date the timestamp for the message
+         * @param read true if the message has been read, false if not
+         * @param deliveryReport true if a delivery report was requested, false if not
+         * @param threadId the thread_id of the message
+         * @return the URI for the new message
+         */
+        public static Uri addMessageToUri(ContentResolver resolver,
+                Uri uri, String address, String body, String subject,
+                Long date, boolean read, boolean deliveryReport, long threadId) {
+            return Reflector._invokeStaticUnchecked(Uri.class, _addMessageToUri_9, resolver,
+                uri, address, body, subject,
+                date, read, deliveryReport, threadId);
+        }
+        public static final Method _addMessageToUri_9 = Reflector._method(_cls, "addMessageToUri", ContentResolver.class,
+                Uri.class, String.class, String.class, String.class,
+                Long.class, boolean.class, boolean.class, long.class);
+
+        /**
+         * Move a message to the given folder.
+         *
+         * @param context the context to use
+         * @param uri the message to move
+         * @param folder the folder to move to
+         * @return true if the operation succeeded
+         */
+        public static boolean moveMessageToFolder(Context context,
+                Uri uri, int folder, int error) {
+            return Reflector._invokeStaticUnchecked(boolean.class, _moveMessageToFolder, context,
+                uri, folder, error);
+        }
+        public static final Method _moveMessageToFolder = Reflector._method(_cls, "moveMessageToFolder", Context.class,
+                Uri.class, int.class, int.class);
+
+        /**
+         * Returns true iff the folder (message type) identifies an
+         * outgoing message.
+         */
+        public static boolean isOutgoingFolder(int messageType) {
+            return Reflector._invokeStaticUnchecked(Boolean.class, _isOutgoingFolder, messageType);
+        }
+        public static final Method _isOutgoingFolder = Reflector._method(_cls, "isOutgoingFolder", int.class);
+
     }
 
 }

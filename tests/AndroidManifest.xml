@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- XXX: Usually the test app's package name is suffixed with "tests" to avoid
+     conflicting with the target app, but in this case, we are testing an
+     included library, so the test app *is* the target app. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="unhide.android"
+          android:versionCode="1"
+          android:versionName="1.0">
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="17"
+        />
+
+    <!-- We add an application tag here just so that we can indicate that
+         this package needs to link against the android.test library,
+         which is needed when building test cases. -->
+    <application>
+        <uses-library android:name="android.test.runner" />
+    </application>
+    <!--
+    This declares that this application uses the instrumentation test runner targeting
+    the package of unhide.android.  To run the tests use the command:
+    "adb shell am instrument -w unhide.android/android.test.InstrumentationTestRunner"
+    -->
+    <instrumentation android:name="android.test.InstrumentationTestRunner"
+                     android:targetPackage="unhide.android"
+                     android:label="Tests for unhide.android"/>
+</manifest>

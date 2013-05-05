@@ -1,16 +1,27 @@
-============================================================
-Android Unhidden: Convenient access to Android's hidden APIs
-============================================================
+==============================================
+Android Unhidden: Access Android's hidden APIs
+==============================================
 
-The goal of this library is to provide safe and convenient access to
-non-public, "hidden", but useful Android framework APIs, using reflection.
+This is a library of wrappers that use reflection to provide relatively safe
+and convenient access to the Android framework's non-public, "hidden" APIs.
+
+The wrappers allow your application to compile without the presence of the
+hidden framework code, and without hardcoding the values of fields and
+constants used by the APIs. At load/run time, the wrappers use reflection to
+access the device's implementation.
+
+All the usual warnings about using unsupported APIs still apply: see for
+example the Android Developers Blog post `Be Careful With Content Providers`_.
+
+.. _`Be Careful With Content Providers`:
+    http://android-developers.blogspot.com/2010/05/be-careful-with-content-providers.html
 
 
 Usage
 =====
 
-Using the wrapped libraries is as simple as adding a ``unhide.`` prefix to the
-import you want to use.
+Generally, using the wrappers is as simple as adding ``unhide.`` in front of
+the import of the library you want to use.
 
 For example, instead of::
 
@@ -19,6 +30,13 @@ For example, instead of::
 use::
 
     import unhide.android.provider.Telephony;
+
+There are some caveats to be aware of:
+
+* The reflection process delays the initialization of ``static final`` constant
+  fields to class load time, rather than compile time: this means that you
+  cannot use these constants in ``switch`` blocks. (Using them in ``if`` blocks
+  or elsewhere is fine, though.)
 
 
 Supported APIs

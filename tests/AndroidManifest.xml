@@ -3,7 +3,7 @@
      conflicting with the target app, but in this case, we are testing an
      included library, so the test app *is* the target app. -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="unhide.android.provider"
+          package="unhide.android"
           android:versionCode="1"
           android:versionName="1.0">
 
@@ -20,10 +20,10 @@
     </application>
     <!--
     This declares that this application uses the instrumentation test runner targeting
-    the package of unhide.android.provider.  To run the tests use the command:
-    "adb shell am instrument -w unhide.android.provider/android.test.InstrumentationTestRunner"
+    the package of unhide.android.  To run the tests use the command:
+    "adb shell am instrument -w unhide.android/android.test.InstrumentationTestRunner"
     -->
     <instrumentation android:name="android.test.InstrumentationTestRunner"
-                     android:targetPackage="unhide.android.provider"
-                     android:label="Tests for unhide.android.provider"/>
+                     android:targetPackage="unhide.android"
+                     android:label="Tests for unhide.android"/>
 </manifest>

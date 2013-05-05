@@ -401,4 +401,54 @@ public class TelephonyTest extends TestCase {
         assertNotNull(Telephony.Mms.Intents.DELETED_CONTENTS);
     }
 
+    public void testMmsSms() {
+        assertNotNull(Telephony.MmsSms._cls);
+
+        assertNotNull(Telephony.MmsSms.TYPE_DISCRIMINATOR_COLUMN);
+
+        assertNotNull(Telephony.MmsSms.CONTENT_URI);
+        assertNotNull(Telephony.MmsSms.CONTENT_CONVERSATIONS_URI);
+        assertNotNull(Telephony.MmsSms.CONTENT_FILTER_BYPHONE_URI);
+        assertNotNull(Telephony.MmsSms.CONTENT_UNDELIVERED_URI);
+        assertNotNull(Telephony.MmsSms.CONTENT_DRAFT_URI);
+        assertNotNull(Telephony.MmsSms.CONTENT_LOCKED_URI);
+        assertNotNull(Telephony.MmsSms.SEARCH_URI);
+
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.MmsSms.SMS_PROTO);
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.MmsSms.MMS_PROTO);
+
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.MmsSms.NO_ERROR);
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.MmsSms.ERR_TYPE_GENERIC);
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.MmsSms.ERR_TYPE_SMS_PROTO_TRANSIENT);
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.MmsSms.ERR_TYPE_MMS_PROTO_TRANSIENT);
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.MmsSms.ERR_TYPE_TRANSPORT_FAILURE);
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.MmsSms.ERR_TYPE_GENERIC_PERMANENT);
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.MmsSms.ERR_TYPE_SMS_PROTO_PERMANENT);
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.MmsSms.ERR_TYPE_MMS_PROTO_PERMANENT);
+    }
+
+    public void testMmsSmsPendingMessages() {
+        assertNotNull(Telephony.MmsSms.PendingMessages._cls);
+
+        assertNotNull(Telephony.MmsSms.PendingMessages.CONTENT_URI);
+
+        assertNotNull(Telephony.MmsSms.PendingMessages.PROTO_TYPE);
+        assertNotNull(Telephony.MmsSms.PendingMessages.MSG_ID);
+        assertNotNull(Telephony.MmsSms.PendingMessages.MSG_TYPE);
+        assertNotNull(Telephony.MmsSms.PendingMessages.ERROR_TYPE);
+        assertNotNull(Telephony.MmsSms.PendingMessages.ERROR_CODE);
+        assertNotNull(Telephony.MmsSms.PendingMessages.RETRY_INDEX);
+        assertNotNull(Telephony.MmsSms.PendingMessages.DUE_TIME);
+        assertNotNull(Telephony.MmsSms.PendingMessages.LAST_TRY);
+    }
+
+    public void testMmsSmsWordsTable() {
+        assertNotNull(Telephony.MmsSms.WordsTable._cls);
+
+        assertNotNull(Telephony.MmsSms.WordsTable.ID);
+        assertNotNull(Telephony.MmsSms.WordsTable.SOURCE_ROW_ID);
+        assertNotNull(Telephony.MmsSms.WordsTable.TABLE_ID);
+        assertNotNull(Telephony.MmsSms.WordsTable.INDEXED_TEXT);
+    }
+
 }

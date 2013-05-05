@@ -1566,4 +1566,109 @@ public final class Telephony {
 
     }
 
+    /**
+     * Contains all MMS and SMS messages.
+     */
+    public static final class MmsSms implements BaseColumns {
+
+        public static final Class<?> _cls = Reflector._class("android.provider.Telephony$MmsSms");
+
+        /**
+         * The column to distinguish SMS &amp; MMS messages in query results.
+         */
+        public static final String TYPE_DISCRIMINATOR_COLUMN = Reflector._String(_cls, "TYPE_DISCRIMINATOR_COLUMN");
+
+        public static final Uri CONTENT_URI = Reflector._Uri(_cls, "CONTENT_URI");
+
+        public static final Uri CONTENT_CONVERSATIONS_URI = Reflector._Uri(_cls, "CONTENT_CONVERSATIONS_URI");
+
+        public static final Uri CONTENT_FILTER_BYPHONE_URI = Reflector._Uri(_cls, "CONTENT_FILTER_BYPHONE_URI");
+
+        public static final Uri CONTENT_UNDELIVERED_URI = Reflector._Uri(_cls, "CONTENT_UNDELIVERED_URI");
+
+        public static final Uri CONTENT_DRAFT_URI = Reflector._Uri(_cls, "CONTENT_DRAFT_URI");
+
+        public static final Uri CONTENT_LOCKED_URI = Reflector._Uri(_cls, "CONTENT_LOCKED_URI");
+
+        /***
+         * Pass in a query parameter called "pattern" which is the text
+         * to search for.
+         * The sort order is fixed to be thread_id ASC,date DESC.
+         */
+        public static final Uri SEARCH_URI = Reflector._Uri(_cls, "SEARCH_URI");
+
+        // Constants for message protocol types.
+        public static final int SMS_PROTO = Reflector._int(_cls, "SMS_PROTO", _MISSING);
+        public static final int MMS_PROTO = Reflector._int(_cls, "MMS_PROTO", _MISSING);
+
+        // Constants for error types of pending messages.
+        public static final int NO_ERROR                      = Reflector._int(_cls, "NO_ERROR", _MISSING);
+        public static final int ERR_TYPE_GENERIC              = Reflector._int(_cls, "ERR_TYPE_GENERIC", _MISSING);
+        public static final int ERR_TYPE_SMS_PROTO_TRANSIENT  = Reflector._int(_cls, "ERR_TYPE_SMS_PROTO_TRANSIENT", _MISSING);
+        public static final int ERR_TYPE_MMS_PROTO_TRANSIENT  = Reflector._int(_cls, "ERR_TYPE_MMS_PROTO_TRANSIENT", _MISSING);
+        public static final int ERR_TYPE_TRANSPORT_FAILURE    = Reflector._int(_cls, "ERR_TYPE_TRANSPORT_FAILURE", _MISSING);
+        public static final int ERR_TYPE_GENERIC_PERMANENT    = Reflector._int(_cls, "ERR_TYPE_GENERIC_PERMANENT", _MISSING);
+        public static final int ERR_TYPE_SMS_PROTO_PERMANENT  = Reflector._int(_cls, "ERR_TYPE_SMS_PROTO_PERMANENT", _MISSING);
+        public static final int ERR_TYPE_MMS_PROTO_PERMANENT  = Reflector._int(_cls, "ERR_TYPE_MMS_PROTO_PERMANENT", _MISSING);
+
+        public static final class PendingMessages implements BaseColumns {
+
+            public static final Class<?> _cls = Reflector._class("android.provider.Telephony$MmsSms$PendingMessages");
+
+            public static final Uri CONTENT_URI = Reflector._Uri(_cls, "CONTENT_URI");
+            /**
+             * The type of transport protocol(MMS or SMS).
+             * <P>Type: INTEGER</P>
+             */
+            public static final String PROTO_TYPE = Reflector._String(_cls, "PROTO_TYPE");
+            /**
+             * The ID of the message to be sent or downloaded.
+             * <P>Type: INTEGER</P>
+             */
+            public static final String MSG_ID = Reflector._String(_cls, "MSG_ID");
+            /**
+             * The type of the message to be sent or downloaded.
+             * This field is only valid for MM. For SM, its value is always
+             * set to 0.
+             */
+            public static final String MSG_TYPE = Reflector._String(_cls, "MSG_TYPE");
+            /**
+             * The type of the error code.
+             * <P>Type: INTEGER</P>
+             */
+            public static final String ERROR_TYPE = Reflector._String(_cls, "ERROR_TYPE");
+            /**
+             * The error code of sending/retrieving process.
+             * <P>Type:  INTEGER</P>
+             */
+            public static final String ERROR_CODE = Reflector._String(_cls, "ERROR_CODE");
+            /**
+             * How many times we tried to send or download the message.
+             * <P>Type:  INTEGER</P>
+             */
+            public static final String RETRY_INDEX = Reflector._String(_cls, "RETRY_INDEX");
+            /**
+             * The time to do next retry.
+             */
+            public static final String DUE_TIME = Reflector._String(_cls, "DUE_TIME");
+            /**
+             * The time we last tried to send or download the message.
+             */
+            public static final String LAST_TRY = Reflector._String(_cls, "LAST_TRY");
+
+        }
+
+        public static final class WordsTable {
+
+            public static final Class<?> _cls = Reflector._class("android.provider.Telephony$MmsSms$WordsTable");
+
+            public static final String ID = Reflector._String(_cls, "ID");
+            public static final String SOURCE_ROW_ID = Reflector._String(_cls, "SOURCE_ROW_ID");
+            public static final String TABLE_ID = Reflector._String(_cls, "TABLE_ID");
+            public static final String INDEXED_TEXT = Reflector._String(_cls, "INDEXED_TEXT");
+
+        }
+
+    }
+
 }

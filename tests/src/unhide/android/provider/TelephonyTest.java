@@ -260,4 +260,18 @@ public class TelephonyTest extends TestCase {
         assertNotNull(Telephony.ThreadsColumns.HAS_ATTACHMENT);
     }
 
+    public void testThreads() {
+        assertNotNull(Telephony.Threads._cls);
+
+        assertNotNull(Telephony.Threads.CONTENT_URI);
+        assertNotNull(Telephony.Threads.OBSOLETE_THREADS_URI);
+
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.Threads.COMMON_THREAD);
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.Threads.BROADCAST_THREAD);
+
+        // Telephony.Sms.Intents.getOrCreateThreadId()
+        assertNotNull(Telephony.Threads._getOrCreateThreadId_String);
+        assertNotNull(Telephony.Threads._getOrCreateThreadId_Set);
+    }
+
 }

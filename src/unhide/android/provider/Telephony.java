@@ -25,6 +25,7 @@ import android.provider.BaseColumns;
 import android.telephony.SmsMessage;
 
 import java.lang.reflect.Method;
+import java.util.Set;
 
 import unhide.Reflector;
 
@@ -1188,6 +1189,50 @@ public final class Telephony {
          */
         public static final String HAS_ATTACHMENT = Reflector._String(_cls, "HAS_ATTACHMENT");
 
+    }
+
+    /**
+     * Helper functions for the "threads" table used by MMS and SMS.
+     */
+    public static final class Threads implements ThreadsColumns {
+
+        public static final Class<?> _cls = Reflector._class("android.provider.Telephony$Threads");
+
+        public static final Uri CONTENT_URI = Reflector._Uri(_cls, "CONTENT_URI");
+        public static final Uri OBSOLETE_THREADS_URI = Reflector._Uri(_cls, "OBSOLETE_THREADS_URI");
+
+        public static final int COMMON_THREAD    = Reflector._int(_cls, "COMMON_THREAD", _MISSING);
+        public static final int BROADCAST_THREAD = Reflector._int(_cls, "BROADCAST_THREAD", _MISSING);
+
+        // No one should construct an instance of this class.
+        private Threads() {
+        }
+
+        /**
+         * This is a single-recipient version of
+         * getOrCreateThreadId.  It's convenient for use with SMS
+         * messages.
+         */
+        public static long getOrCreateThreadId(Context context, String recipient) {
+            return Reflector._invokeStaticUnchecked(Long.class, _getOrCreateThreadId_String, context, recipient);
+        }
+        public static final Method _getOrCreateThreadId_String = Reflector._method(_cls, "getOrCreateThreadId", Context.class, String.class);
+
+        /**
+         * Given the recipients list and subject of an unsaved message,
+         * return its thread ID.  If the message starts a new thread,
+         * allocate a new thread ID.  Otherwise, use the appropriate
+         * existing thread ID.
+         *
+         * Find the thread ID of the same set of recipients (in
+         * any order, without any additions). If one
+         * is found, return it.  Otherwise, return a unique thread ID.
+         */
+        public static long getOrCreateThreadId(
+                Context context, Set<String> recipients) {
+            return Reflector._invokeStaticUnchecked(Long.class, _getOrCreateThreadId_Set, context, recipients);
+        }
+        public static final Method _getOrCreateThreadId_Set = Reflector._method(_cls, "getOrCreateThreadId", Context.class, Set.class);
     }
 
 }

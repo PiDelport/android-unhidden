@@ -1756,4 +1756,50 @@ public final class Telephony {
 
     }
 
+    public static final class Intents {
+
+        public static final Class<?> _cls = Reflector._class("android.provider.Telephony$Intents");
+
+        private Intents() {
+            // Not instantiable
+        }
+
+        /**
+         * Broadcast Action: A "secret code" has been entered in the dialer. Secret codes are
+         * of the form *#*#<code>#*#*. The intent will have the data URI:</p>
+         *
+         * <p><code>android_secret_code://&lt;code&gt;</code></p>
+         */
+        public static final String SECRET_CODE_ACTION = Reflector._String(_cls, "SECRET_CODE_ACTION");
+
+        /**
+         * Broadcast Action: The Service Provider string(s) have been updated.  Activities or
+         * services that use these strings should update their display.
+         * The intent will have the following extra values:</p>
+         * <ul>
+         *   <li><em>showPlmn</em> - Boolean that indicates whether the PLMN should be shown.</li>
+         *   <li><em>plmn</em> - The operator name of the registered network, as a string.</li>
+         *   <li><em>showSpn</em> - Boolean that indicates whether the SPN should be shown.</li>
+         *   <li><em>spn</em> - The service provider name, as a string.</li>
+         * </ul>
+         * Note that <em>showPlmn</em> may indicate that <em>plmn</em> should be displayed, even
+         * though the value for <em>plmn</em> is null.  This can happen, for example, if the phone
+         * has not registered to a network yet.  In this case the receiver may substitute an
+         * appropriate placeholder string (eg, "No service").
+         *
+         * It is recommended to display <em>plmn</em> before / above <em>spn</em> if
+         * both are displayed.
+         *
+         * <p>Note this is a protected intent that can only be sent
+         * by the system.
+         */
+        public static final String SPN_STRINGS_UPDATED_ACTION = Reflector._String(_cls, "SPN_STRINGS_UPDATED_ACTION");
+
+        public static final String EXTRA_SHOW_PLMN  = Reflector._String(_cls, "EXTRA_SHOW_PLMN");
+        public static final String EXTRA_PLMN       = Reflector._String(_cls, "EXTRA_PLMN");
+        public static final String EXTRA_SHOW_SPN   = Reflector._String(_cls, "EXTRA_SHOW_SPN");
+        public static final String EXTRA_SPN        = Reflector._String(_cls, "EXTRA_SPN");
+
+    }
+
 }

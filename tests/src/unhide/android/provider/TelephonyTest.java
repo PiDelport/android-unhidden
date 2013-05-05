@@ -482,4 +482,15 @@ public class TelephonyTest extends TestCase {
         assertNotNull(Telephony.Carriers.BEARER);
     }
 
+    public void testIntents() {
+        assertNotNull(Telephony.Intents._cls);
+
+        assertNotNull(Telephony.Intents.SECRET_CODE_ACTION);
+        assertNotNull(Telephony.Intents.SPN_STRINGS_UPDATED_ACTION);
+        assertNotNull(Telephony.Intents.EXTRA_SHOW_PLMN);
+        assertNotNull(Telephony.Intents.EXTRA_PLMN);
+        assertNotNull(Telephony.Intents.EXTRA_SHOW_SPN);
+        assertNotNull(Telephony.Intents.EXTRA_SPN);
+    }
+
 }

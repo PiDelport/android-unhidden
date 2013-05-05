@@ -183,6 +183,11 @@ public class TelephonyTest extends TestCase {
         assertNotNull(Telephony.BaseMmsColumns.MESSAGE_BOX);
         assertNotNull(Telephony.BaseMmsColumns.READ);
         assertNotNull(Telephony.BaseMmsColumns.SEEN);
+        if (Build.VERSION_CODES.JELLY_BEAN_MR1 <= Build.VERSION.SDK_INT) {
+            assertNotNull(Telephony.BaseMmsColumns.TEXT_ONLY);
+        } else {
+            assertNull(Telephony.BaseMmsColumns.TEXT_ONLY);
+        }
         assertNotNull(Telephony.BaseMmsColumns.MESSAGE_ID);
         assertNotNull(Telephony.BaseMmsColumns.SUBJECT);
         assertNotNull(Telephony.BaseMmsColumns.SUBJECT_CHARSET);
@@ -545,14 +550,18 @@ public class TelephonyTest extends TestCase {
     }
 
     public void testIntents() {
-        assertNotNull(Telephony.Intents._cls);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            assertNotNull(Telephony.Intents._cls);
 
-        assertNotNull(Telephony.Intents.SECRET_CODE_ACTION);
-        assertNotNull(Telephony.Intents.SPN_STRINGS_UPDATED_ACTION);
-        assertNotNull(Telephony.Intents.EXTRA_SHOW_PLMN);
-        assertNotNull(Telephony.Intents.EXTRA_PLMN);
-        assertNotNull(Telephony.Intents.EXTRA_SHOW_SPN);
-        assertNotNull(Telephony.Intents.EXTRA_SPN);
+            assertNotNull(Telephony.Intents.SECRET_CODE_ACTION);
+            assertNotNull(Telephony.Intents.SPN_STRINGS_UPDATED_ACTION);
+            assertNotNull(Telephony.Intents.EXTRA_SHOW_PLMN);
+            assertNotNull(Telephony.Intents.EXTRA_PLMN);
+            assertNotNull(Telephony.Intents.EXTRA_SHOW_SPN);
+            assertNotNull(Telephony.Intents.EXTRA_SPN);
+        } else {
+            assertNull(Telephony.Intents._cls);
+        }
     }
 
 }

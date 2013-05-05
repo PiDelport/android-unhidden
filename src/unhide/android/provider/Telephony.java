@@ -651,4 +651,543 @@ public final class Telephony {
 
     }
 
+    /**
+     * Base columns for tables that contain MMSs.
+     */
+    public interface BaseMmsColumns extends BaseColumns {
+
+        public static final Class<?> _cls = Reflector._class("android.provider.Telephony$BaseMmsColumns");
+
+        public static final int MESSAGE_BOX_ALL    = Reflector._int(_cls, "MESSAGE_BOX_ALL", _MISSING);
+        public static final int MESSAGE_BOX_INBOX  = Reflector._int(_cls, "MESSAGE_BOX_INBOX", _MISSING);
+        public static final int MESSAGE_BOX_SENT   = Reflector._int(_cls, "MESSAGE_BOX_SENT", _MISSING);
+        public static final int MESSAGE_BOX_DRAFTS = Reflector._int(_cls, "MESSAGE_BOX_DRAFTS", _MISSING);
+        public static final int MESSAGE_BOX_OUTBOX = Reflector._int(_cls, "MESSAGE_BOX_OUTBOX", _MISSING);
+
+        /**
+         * The date the message was received.
+         * <P>Type: INTEGER (long)</P>
+         */
+        public static final String DATE = Reflector._String(_cls, "DATE");
+
+        /**
+         * The date the message was sent.
+         * <P>Type: INTEGER (long)</P>
+         */
+        public static final String DATE_SENT = Reflector._String(_cls, "DATE_SENT");
+
+        /**
+         * The box which the message belong to, for example, MESSAGE_BOX_INBOX.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String MESSAGE_BOX = Reflector._String(_cls, "MESSAGE_BOX");
+
+        /**
+         * Has the message been read.
+         * <P>Type: INTEGER (boolean)</P>
+         */
+        public static final String READ = Reflector._String(_cls, "READ");
+
+        /**
+         * Indicates whether this message has been seen by the user. The "seen" flag will be
+         * used to figure out whether we need to throw up a statusbar notification or not.
+         */
+        public static final String SEEN = Reflector._String(_cls, "SEEN");
+
+        /**
+         * The Message-ID of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String MESSAGE_ID = Reflector._String(_cls, "MESSAGE_ID");
+
+        /**
+         * The subject of the message, if present.
+         * <P>Type: TEXT</P>
+         */
+        public static final String SUBJECT = Reflector._String(_cls, "SUBJECT");
+
+        /**
+         * The character set of the subject, if present.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String SUBJECT_CHARSET = Reflector._String(_cls, "SUBJECT_CHARSET");
+
+        /**
+         * The Content-Type of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String CONTENT_TYPE = Reflector._String(_cls, "CONTENT_TYPE");
+
+        /**
+         * The Content-Location of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String CONTENT_LOCATION = Reflector._String(_cls, "CONTENT_LOCATION");
+
+        /**
+         * The address of the sender.
+         * <P>Type: TEXT</P>
+         */
+        public static final String FROM = Reflector._String(_cls, "FROM");
+
+        /**
+         * The address of the recipients.
+         * <P>Type: TEXT</P>
+         */
+        public static final String TO = Reflector._String(_cls, "TO");
+
+        /**
+         * The address of the cc. recipients.
+         * <P>Type: TEXT</P>
+         */
+        public static final String CC = Reflector._String(_cls, "CC");
+
+        /**
+         * The address of the bcc. recipients.
+         * <P>Type: TEXT</P>
+         */
+        public static final String BCC = Reflector._String(_cls, "BCC");
+
+        /**
+         * The expiry time of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String EXPIRY = Reflector._String(_cls, "EXPIRY");
+
+        /**
+         * The class of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String MESSAGE_CLASS = Reflector._String(_cls, "MESSAGE_CLASS");
+
+        /**
+         * The type of the message defined by MMS spec.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String MESSAGE_TYPE = Reflector._String(_cls, "MESSAGE_TYPE");
+
+        /**
+         * The version of specification that this message conform.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String MMS_VERSION = Reflector._String(_cls, "MMS_VERSION");
+
+        /**
+         * The size of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String MESSAGE_SIZE = Reflector._String(_cls, "MESSAGE_SIZE");
+
+        /**
+         * The priority of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String PRIORITY = Reflector._String(_cls, "PRIORITY");
+
+        /**
+         * The read-report of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String READ_REPORT = Reflector._String(_cls, "READ_REPORT");
+
+        /**
+         * Whether the report is allowed.
+         * <P>Type: TEXT</P>
+         */
+        public static final String REPORT_ALLOWED = Reflector._String(_cls, "REPORT_ALLOWED");
+
+        /**
+         * The response-status of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String RESPONSE_STATUS = Reflector._String(_cls, "RESPONSE_STATUS");
+
+        /**
+         * The status of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String STATUS = Reflector._String(_cls, "STATUS");
+
+        /**
+         * The transaction-id of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String TRANSACTION_ID = Reflector._String(_cls, "TRANSACTION_ID");
+
+        /**
+         * The retrieve-status of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String RETRIEVE_STATUS = Reflector._String(_cls, "RETRIEVE_STATUS");
+
+        /**
+         * The retrieve-text of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String RETRIEVE_TEXT = Reflector._String(_cls, "RETRIEVE_TEXT");
+
+        /**
+         * The character set of the retrieve-text.
+         * <P>Type: TEXT</P>
+         */
+        public static final String RETRIEVE_TEXT_CHARSET = Reflector._String(_cls, "RETRIEVE_TEXT_CHARSET");
+
+        /**
+         * The read-status of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String READ_STATUS = Reflector._String(_cls, "READ_STATUS");
+
+        /**
+         * The content-class of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String CONTENT_CLASS = Reflector._String(_cls, "CONTENT_CLASS");
+
+        /**
+         * The delivery-report of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String DELIVERY_REPORT = Reflector._String(_cls, "DELIVERY_REPORT");
+
+        /**
+         * The delivery-time-token of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String DELIVERY_TIME_TOKEN = Reflector._String(_cls, "DELIVERY_TIME_TOKEN");
+
+        /**
+         * The delivery-time of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String DELIVERY_TIME = Reflector._String(_cls, "DELIVERY_TIME");
+
+        /**
+         * The response-text of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String RESPONSE_TEXT = Reflector._String(_cls, "RESPONSE_TEXT");
+
+        /**
+         * The sender-visibility of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String SENDER_VISIBILITY = Reflector._String(_cls, "SENDER_VISIBILITY");
+
+        /**
+         * The reply-charging of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String REPLY_CHARGING = Reflector._String(_cls, "REPLY_CHARGING");
+
+        /**
+         * The reply-charging-deadline-token of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String REPLY_CHARGING_DEADLINE_TOKEN = Reflector._String(_cls, "REPLY_CHARGING_DEADLINE_TOKEN");
+
+        /**
+         * The reply-charging-deadline of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String REPLY_CHARGING_DEADLINE = Reflector._String(_cls, "REPLY_CHARGING_DEADLINE");
+
+        /**
+         * The reply-charging-id of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String REPLY_CHARGING_ID = Reflector._String(_cls, "REPLY_CHARGING_ID");
+
+        /**
+         * The reply-charging-size of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String REPLY_CHARGING_SIZE = Reflector._String(_cls, "REPLY_CHARGING_SIZE");
+
+        /**
+         * The previously-sent-by of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String PREVIOUSLY_SENT_BY = Reflector._String(_cls, "PREVIOUSLY_SENT_BY");
+
+        /**
+         * The previously-sent-date of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String PREVIOUSLY_SENT_DATE = Reflector._String(_cls, "PREVIOUSLY_SENT_DATE");
+
+        /**
+         * The store of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String STORE = Reflector._String(_cls, "STORE");
+
+        /**
+         * The mm-state of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String MM_STATE = Reflector._String(_cls, "MM_STATE");
+
+        /**
+         * The mm-flags-token of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String MM_FLAGS_TOKEN = Reflector._String(_cls, "MM_FLAGS_TOKEN");
+
+        /**
+         * The mm-flags of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String MM_FLAGS = Reflector._String(_cls, "MM_FLAGS");
+
+        /**
+         * The store-status of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String STORE_STATUS = Reflector._String(_cls, "STORE_STATUS");
+
+        /**
+         * The store-status-text of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String STORE_STATUS_TEXT = Reflector._String(_cls, "STORE_STATUS_TEXT");
+
+        /**
+         * The stored of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String STORED = Reflector._String(_cls, "STORED");
+
+        /**
+         * The totals of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String TOTALS = Reflector._String(_cls, "TOTALS");
+
+        /**
+         * The mbox-totals of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String MBOX_TOTALS = Reflector._String(_cls, "MBOX_TOTALS");
+
+        /**
+         * The mbox-totals-token of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String MBOX_TOTALS_TOKEN = Reflector._String(_cls, "MBOX_TOTALS_TOKEN");
+
+        /**
+         * The quotas of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String QUOTAS = Reflector._String(_cls, "QUOTAS");
+
+        /**
+         * The mbox-quotas of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String MBOX_QUOTAS = Reflector._String(_cls, "MBOX_QUOTAS");
+
+        /**
+         * The mbox-quotas-token of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String MBOX_QUOTAS_TOKEN = Reflector._String(_cls, "MBOX_QUOTAS_TOKEN");
+
+        /**
+         * The message-count of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String MESSAGE_COUNT = Reflector._String(_cls, "MESSAGE_COUNT");
+
+        /**
+         * The start of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String START = Reflector._String(_cls, "START");
+
+        /**
+         * The distribution-indicator of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String DISTRIBUTION_INDICATOR = Reflector._String(_cls, "DISTRIBUTION_INDICATOR");
+
+        /**
+         * The element-descriptor of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String ELEMENT_DESCRIPTOR = Reflector._String(_cls, "ELEMENT_DESCRIPTOR");
+
+        /**
+         * The limit of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String LIMIT = Reflector._String(_cls, "LIMIT");
+
+        /**
+         * The recommended-retrieval-mode of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String RECOMMENDED_RETRIEVAL_MODE = Reflector._String(_cls, "RECOMMENDED_RETRIEVAL_MODE");
+
+        /**
+         * The recommended-retrieval-mode-text of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String RECOMMENDED_RETRIEVAL_MODE_TEXT = Reflector._String(_cls, "RECOMMENDED_RETRIEVAL_MODE_TEXT");
+
+        /**
+         * The status-text of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String STATUS_TEXT = Reflector._String(_cls, "STATUS_TEXT");
+
+        /**
+         * The applic-id of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String APPLIC_ID = Reflector._String(_cls, "APPLIC_ID");
+
+        /**
+         * The reply-applic-id of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String REPLY_APPLIC_ID = Reflector._String(_cls, "REPLY_APPLIC_ID");
+
+        /**
+         * The aux-applic-id of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String AUX_APPLIC_ID = Reflector._String(_cls, "AUX_APPLIC_ID");
+
+        /**
+         * The drm-content of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String DRM_CONTENT = Reflector._String(_cls, "DRM_CONTENT");
+
+        /**
+         * The adaptation-allowed of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String ADAPTATION_ALLOWED = Reflector._String(_cls, "ADAPTATION_ALLOWED");
+
+        /**
+         * The replace-id of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String REPLACE_ID = Reflector._String(_cls, "REPLACE_ID");
+
+        /**
+         * The cancel-id of the message.
+         * <P>Type: TEXT</P>
+         */
+        public static final String CANCEL_ID = Reflector._String(_cls, "CANCEL_ID");
+
+        /**
+         * The cancel-status of the message.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String CANCEL_STATUS = Reflector._String(_cls, "CANCEL_STATUS");
+
+        /**
+         * The thread ID of the message
+         * <P>Type: INTEGER</P>
+         */
+        public static final String THREAD_ID = Reflector._String(_cls, "THREAD_ID");
+
+        /**
+         * Has the message been locked?
+         * <P>Type: INTEGER (boolean)</P>
+         */
+        public static final String LOCKED = Reflector._String(_cls, "LOCKED");
+
+        /**
+         * Meta data used externally.
+         * <P>Type: TEXT</P>
+         */
+        public static final String META_DATA = Reflector._String(_cls, "META_DATA");
+
+    }
+
+    /**
+     * Columns for the "canonical_addresses" table used by MMS and
+     * SMS."
+     */
+    public interface CanonicalAddressesColumns extends BaseColumns {
+
+        public static final Class<?> _cls = Reflector._class("android.provider.Telephony$CanonicalAddressesColumns");
+
+        /**
+         * An address used in MMS or SMS.  Email addresses are
+         * converted to lower case and are compared by string
+         * equality.  Other addresses are compared using
+         * PHONE_NUMBERS_EQUAL.
+         * <P>Type: TEXT</P>
+         */
+        public static final String ADDRESS = Reflector._String(_cls, "ADDRESS");
+
+    }
+
+    /**
+     * Columns for the "threads" table used by MMS and SMS.
+     */
+    public interface ThreadsColumns extends BaseColumns {
+
+        public static final Class<?> _cls = Reflector._class("android.provider.Telephony$ThreadsColumns");
+
+        /**
+         * The date at which the thread was created.
+         *
+         * <P>Type: INTEGER (long)</P>
+         */
+        public static final String DATE = Reflector._String(_cls, "DATE");
+
+        /**
+         * A string encoding of the recipient IDs of the recipients of
+         * the message, in numerical order and separated by spaces.
+         * <P>Type: TEXT</P>
+         */
+        public static final String RECIPIENT_IDS = Reflector._String(_cls, "RECIPIENT_IDS");
+
+        /**
+         * The message count of the thread.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String MESSAGE_COUNT = Reflector._String(_cls, "MESSAGE_COUNT");
+        /**
+         * Indicates whether all messages of the thread have been read.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String READ = Reflector._String(_cls, "READ");
+
+        /**
+         * The snippet of the latest message in the thread.
+         * <P>Type: TEXT</P>
+         */
+        public static final String SNIPPET = Reflector._String(_cls, "SNIPPET");
+        /**
+         * The charset of the snippet.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String SNIPPET_CHARSET = Reflector._String(_cls, "SNIPPET_CHARSET");
+        /**
+         * Type of the thread, either Threads.COMMON_THREAD or
+         * Threads.BROADCAST_THREAD.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String TYPE = Reflector._String(_cls, "TYPE");
+        /**
+         * Indicates whether there is a transmission error in the thread.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String ERROR = Reflector._String(_cls, "ERROR");
+        /**
+         * Indicates whether this thread contains any attachments.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String HAS_ATTACHMENT = Reflector._String(_cls, "HAS_ATTACHMENT");
+
+    }
+
 }

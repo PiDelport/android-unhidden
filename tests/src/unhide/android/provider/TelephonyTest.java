@@ -155,4 +155,109 @@ public class TelephonyTest extends TestCase {
         assertNotNull(Telephony.Sms.Intents._getMessagesFromIntent);
     }
 
+    public void testBaseMmsColumns() {
+        assertNotNull(Telephony.BaseMmsColumns._cls);
+
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.BaseMmsColumns.MESSAGE_BOX_ALL);
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.BaseMmsColumns.MESSAGE_BOX_INBOX);
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.BaseMmsColumns.MESSAGE_BOX_SENT);
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.BaseMmsColumns.MESSAGE_BOX_DRAFTS);
+        MoreAsserts.assertNotEqual(Telephony._MISSING, Telephony.BaseMmsColumns.MESSAGE_BOX_OUTBOX);
+
+        assertNotNull(Telephony.BaseMmsColumns.DATE);
+        assertNotNull(Telephony.BaseMmsColumns.DATE_SENT);
+        assertNotNull(Telephony.BaseMmsColumns.MESSAGE_BOX);
+        assertNotNull(Telephony.BaseMmsColumns.READ);
+        assertNotNull(Telephony.BaseMmsColumns.SEEN);
+        assertNotNull(Telephony.BaseMmsColumns.MESSAGE_ID);
+        assertNotNull(Telephony.BaseMmsColumns.SUBJECT);
+        assertNotNull(Telephony.BaseMmsColumns.SUBJECT_CHARSET);
+        assertNotNull(Telephony.BaseMmsColumns.CONTENT_TYPE);
+        assertNotNull(Telephony.BaseMmsColumns.CONTENT_LOCATION);
+        assertNotNull(Telephony.BaseMmsColumns.FROM);
+        assertNotNull(Telephony.BaseMmsColumns.TO);
+        assertNotNull(Telephony.BaseMmsColumns.CC);
+        assertNotNull(Telephony.BaseMmsColumns.BCC);
+        assertNotNull(Telephony.BaseMmsColumns.EXPIRY);
+        assertNotNull(Telephony.BaseMmsColumns.MESSAGE_CLASS);
+        assertNotNull(Telephony.BaseMmsColumns.MESSAGE_TYPE);
+        assertNotNull(Telephony.BaseMmsColumns.MMS_VERSION);
+        assertNotNull(Telephony.BaseMmsColumns.MESSAGE_SIZE);
+        assertNotNull(Telephony.BaseMmsColumns.PRIORITY);
+        assertNotNull(Telephony.BaseMmsColumns.READ_REPORT);
+        assertNotNull(Telephony.BaseMmsColumns.REPORT_ALLOWED);
+        assertNotNull(Telephony.BaseMmsColumns.RESPONSE_STATUS);
+        assertNotNull(Telephony.BaseMmsColumns.STATUS);
+        assertNotNull(Telephony.BaseMmsColumns.TRANSACTION_ID);
+        assertNotNull(Telephony.BaseMmsColumns.RETRIEVE_STATUS);
+        assertNotNull(Telephony.BaseMmsColumns.RETRIEVE_TEXT);
+        assertNotNull(Telephony.BaseMmsColumns.RETRIEVE_TEXT_CHARSET);
+        assertNotNull(Telephony.BaseMmsColumns.READ_STATUS);
+        assertNotNull(Telephony.BaseMmsColumns.CONTENT_CLASS);
+        assertNotNull(Telephony.BaseMmsColumns.DELIVERY_REPORT);
+        assertNotNull(Telephony.BaseMmsColumns.DELIVERY_TIME_TOKEN);
+        assertNotNull(Telephony.BaseMmsColumns.DELIVERY_TIME);
+        assertNotNull(Telephony.BaseMmsColumns.RESPONSE_TEXT);
+        assertNotNull(Telephony.BaseMmsColumns.SENDER_VISIBILITY);
+        assertNotNull(Telephony.BaseMmsColumns.REPLY_CHARGING);
+        assertNotNull(Telephony.BaseMmsColumns.REPLY_CHARGING_DEADLINE_TOKEN);
+        assertNotNull(Telephony.BaseMmsColumns.REPLY_CHARGING_DEADLINE);
+        assertNotNull(Telephony.BaseMmsColumns.REPLY_CHARGING_ID);
+        assertNotNull(Telephony.BaseMmsColumns.REPLY_CHARGING_SIZE);
+        assertNotNull(Telephony.BaseMmsColumns.PREVIOUSLY_SENT_BY);
+        assertNotNull(Telephony.BaseMmsColumns.PREVIOUSLY_SENT_DATE);
+        assertNotNull(Telephony.BaseMmsColumns.STORE);
+        assertNotNull(Telephony.BaseMmsColumns.MM_STATE);
+        assertNotNull(Telephony.BaseMmsColumns.MM_FLAGS_TOKEN);
+        assertNotNull(Telephony.BaseMmsColumns.MM_FLAGS);
+        assertNotNull(Telephony.BaseMmsColumns.STORE_STATUS);
+        assertNotNull(Telephony.BaseMmsColumns.STORE_STATUS_TEXT);
+        assertNotNull(Telephony.BaseMmsColumns.STORED);
+        assertNotNull(Telephony.BaseMmsColumns.TOTALS);
+        assertNotNull(Telephony.BaseMmsColumns.MBOX_TOTALS);
+        assertNotNull(Telephony.BaseMmsColumns.MBOX_TOTALS_TOKEN);
+        assertNotNull(Telephony.BaseMmsColumns.QUOTAS);
+        assertNotNull(Telephony.BaseMmsColumns.MBOX_QUOTAS);
+        assertNotNull(Telephony.BaseMmsColumns.MBOX_QUOTAS_TOKEN);
+        assertNotNull(Telephony.BaseMmsColumns.MESSAGE_COUNT);
+        assertNotNull(Telephony.BaseMmsColumns.START);
+        assertNotNull(Telephony.BaseMmsColumns.DISTRIBUTION_INDICATOR);
+        assertNotNull(Telephony.BaseMmsColumns.ELEMENT_DESCRIPTOR);
+        assertNotNull(Telephony.BaseMmsColumns.LIMIT);
+        assertNotNull(Telephony.BaseMmsColumns.RECOMMENDED_RETRIEVAL_MODE);
+        assertNotNull(Telephony.BaseMmsColumns.RECOMMENDED_RETRIEVAL_MODE_TEXT);
+        assertNotNull(Telephony.BaseMmsColumns.STATUS_TEXT);
+        assertNotNull(Telephony.BaseMmsColumns.APPLIC_ID);
+        assertNotNull(Telephony.BaseMmsColumns.REPLY_APPLIC_ID);
+        assertNotNull(Telephony.BaseMmsColumns.AUX_APPLIC_ID);
+        assertNotNull(Telephony.BaseMmsColumns.DRM_CONTENT);
+        assertNotNull(Telephony.BaseMmsColumns.ADAPTATION_ALLOWED);
+        assertNotNull(Telephony.BaseMmsColumns.REPLACE_ID);
+        assertNotNull(Telephony.BaseMmsColumns.CANCEL_ID);
+        assertNotNull(Telephony.BaseMmsColumns.CANCEL_STATUS);
+        assertNotNull(Telephony.BaseMmsColumns.THREAD_ID);
+        assertNotNull(Telephony.BaseMmsColumns.LOCKED);
+        assertNotNull(Telephony.BaseMmsColumns.META_DATA);
+    }
+
+    public void testCanonicalAddressesColumns() {
+        assertNotNull(Telephony.CanonicalAddressesColumns._cls);
+
+        assertNotNull(Telephony.CanonicalAddressesColumns.ADDRESS);
+    }
+
+    public void testThreadsColumns() {
+        assertNotNull(Telephony.ThreadsColumns._cls);
+
+        assertNotNull(Telephony.ThreadsColumns.DATE);
+        assertNotNull(Telephony.ThreadsColumns.RECIPIENT_IDS);
+        assertNotNull(Telephony.ThreadsColumns.MESSAGE_COUNT);
+        assertNotNull(Telephony.ThreadsColumns.READ);
+        assertNotNull(Telephony.ThreadsColumns.SNIPPET);
+        assertNotNull(Telephony.ThreadsColumns.SNIPPET_CHARSET);
+        assertNotNull(Telephony.ThreadsColumns.TYPE);
+        assertNotNull(Telephony.ThreadsColumns.ERROR);
+        assertNotNull(Telephony.ThreadsColumns.HAS_ATTACHMENT);
+    }
+
 }

@@ -451,4 +451,35 @@ public class TelephonyTest extends TestCase {
         assertNotNull(Telephony.MmsSms.WordsTable.INDEXED_TEXT);
     }
 
+    public void testCarriers() {
+        assertNotNull(Telephony.Carriers._cls);
+
+        assertNotNull(Telephony.Carriers.CONTENT_URI);
+        assertNotNull(Telephony.Carriers.DEFAULT_SORT_ORDER);
+
+        assertNotNull(Telephony.Carriers.NAME);
+        assertNotNull(Telephony.Carriers.APN);
+        assertNotNull(Telephony.Carriers.PROXY);
+        assertNotNull(Telephony.Carriers.PORT);
+        assertNotNull(Telephony.Carriers.MMSPROXY);
+        assertNotNull(Telephony.Carriers.MMSPORT);
+        assertNotNull(Telephony.Carriers.SERVER);
+        assertNotNull(Telephony.Carriers.USER);
+        assertNotNull(Telephony.Carriers.PASSWORD);
+        assertNotNull(Telephony.Carriers.MMSC);
+        assertNotNull(Telephony.Carriers.MCC);
+        assertNotNull(Telephony.Carriers.MNC);
+        assertNotNull(Telephony.Carriers.NUMERIC);
+        assertNotNull(Telephony.Carriers.AUTH_TYPE);
+        assertNotNull(Telephony.Carriers.TYPE);
+        assertNotNull(Telephony.Carriers.INACTIVE_TIMER);
+        assertNotNull(Telephony.Carriers.ENABLED);
+        assertNotNull(Telephony.Carriers.CLASS);
+        assertNotNull(Telephony.Carriers.PROTOCOL);
+        assertNotNull(Telephony.Carriers.ROAMING_PROTOCOL);
+        assertNotNull(Telephony.Carriers.CURRENT);
+        assertNotNull(Telephony.Carriers.CARRIER_ENABLED);
+        assertNotNull(Telephony.Carriers.BEARER);
+    }
+
 }

@@ -1671,4 +1671,89 @@ public final class Telephony {
 
     }
 
+    public static final class Carriers implements BaseColumns {
+
+        public static final Class<?> _cls = Reflector._class("android.provider.Telephony$Carriers");
+
+        /**
+         * The content:// style URL for this table
+         */
+        public static final Uri CONTENT_URI = Reflector._Uri(_cls, "CONTENT_URI");
+
+        /**
+         * The default sort order for this table
+         */
+        public static final String DEFAULT_SORT_ORDER = Reflector._String(_cls, "DEFAULT_SORT_ORDER");
+
+        public static final String NAME = Reflector._String(_cls, "NAME");
+
+        public static final String APN = Reflector._String(_cls, "APN");
+
+        public static final String PROXY = Reflector._String(_cls, "PROXY");
+
+        public static final String PORT = Reflector._String(_cls, "PORT");
+
+        public static final String MMSPROXY = Reflector._String(_cls, "MMSPROXY");
+
+        public static final String MMSPORT = Reflector._String(_cls, "MMSPORT");
+
+        public static final String SERVER = Reflector._String(_cls, "SERVER");
+
+        public static final String USER = Reflector._String(_cls, "USER");
+
+        public static final String PASSWORD = Reflector._String(_cls, "PASSWORD");
+
+        public static final String MMSC = Reflector._String(_cls, "MMSC");
+
+        public static final String MCC = Reflector._String(_cls, "MCC");
+
+        public static final String MNC = Reflector._String(_cls, "MNC");
+
+        public static final String NUMERIC = Reflector._String(_cls, "NUMERIC");
+
+        public static final String AUTH_TYPE = Reflector._String(_cls, "AUTH_TYPE");
+
+        public static final String TYPE = Reflector._String(_cls, "TYPE");
+
+        public static final String INACTIVE_TIMER = Reflector._String(_cls, "INACTIVE_TIMER");
+
+        // Only if enabled try Data Connection.
+        public static final String ENABLED = Reflector._String(_cls, "ENABLED");
+
+        // Rules apply based on class.
+        public static final String CLASS = Reflector._String(_cls, "CLASS");
+
+        /**
+         * The protocol to be used to connect to this APN.
+         *
+         * One of the PDP_type values in TS 27.007 section 10.1.1.
+         * For example, "IP", "IPV6", "IPV4V6", or "PPP".
+         */
+        public static final String PROTOCOL = Reflector._String(_cls, "PROTOCOL");
+
+        /**
+          * The protocol to be used to connect to this APN when roaming.
+          *
+          * The syntax is the same as protocol.
+          */
+        public static final String ROAMING_PROTOCOL = Reflector._String(_cls, "ROAMING_PROTOCOL");
+
+        public static final String CURRENT = Reflector._String(_cls, "CURRENT");
+
+        /**
+          * Current status of APN
+          * true : enabled APN, false : disabled APN.
+          */
+        public static final String CARRIER_ENABLED = Reflector._String(_cls, "CARRIER_ENABLED");
+
+        /**
+          * Radio Access Technology info
+          * To check what values can hold, refer to ServiceState.java.
+          * This should be spread to other technologies,
+          * but currently only used for LTE(14) and EHRPD(13).
+          */
+        public static final String BEARER = Reflector._String(_cls, "BEARER");
+
+    }
+
 }

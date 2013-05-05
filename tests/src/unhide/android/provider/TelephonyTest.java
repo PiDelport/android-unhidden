@@ -153,6 +153,11 @@ public class TelephonyTest extends TestCase {
             assertNull(Telephony.Sms.Intents.SMS_CB_RECEIVED_ACTION);
             assertNull(Telephony.Sms.Intents.SMS_EMERGENCY_CB_RECEIVED_ACTION);
         }
+        if (Build.VERSION_CODES.JELLY_BEAN <= Build.VERSION.SDK_INT) {
+            assertNotNull(Telephony.Sms.Intents.SMS_SERVICE_CATEGORY_PROGRAM_DATA_RECEIVED_ACTION);
+        } else {
+            assertNull(Telephony.Sms.Intents.SMS_SERVICE_CATEGORY_PROGRAM_DATA_RECEIVED_ACTION);
+        }
         assertNotNull(Telephony.Sms.Intents.SIM_FULL_ACTION);
         assertNotNull(Telephony.Sms.Intents.SMS_REJECTED_ACTION);
 
@@ -501,6 +506,41 @@ public class TelephonyTest extends TestCase {
         } else {
             assertNull(Telephony.Carriers.CARRIER_ENABLED);
             assertNull(Telephony.Carriers.BEARER);
+        }
+    }
+
+    public void testCellBroadcasts() {
+        if (Build.VERSION_CODES.JELLY_BEAN <= Build.VERSION.SDK_INT) {
+            assertNotNull(Telephony.CellBroadcasts._cls);
+
+            assertNotNull(Telephony.CellBroadcasts.CONTENT_URI);
+
+            assertNotNull(Telephony.CellBroadcasts.GEOGRAPHICAL_SCOPE);
+            assertNotNull(Telephony.CellBroadcasts.SERIAL_NUMBER);
+            assertNotNull(Telephony.CellBroadcasts.PLMN);
+            assertNotNull(Telephony.CellBroadcasts.LAC);
+            assertNotNull(Telephony.CellBroadcasts.CID);
+            assertNotNull(Telephony.CellBroadcasts.V1_MESSAGE_CODE);
+            assertNotNull(Telephony.CellBroadcasts.V1_MESSAGE_IDENTIFIER);
+            assertNotNull(Telephony.CellBroadcasts.SERVICE_CATEGORY);
+            assertNotNull(Telephony.CellBroadcasts.LANGUAGE_CODE);
+            assertNotNull(Telephony.CellBroadcasts.MESSAGE_BODY);
+            assertNotNull(Telephony.CellBroadcasts.DELIVERY_TIME);
+            assertNotNull(Telephony.CellBroadcasts.MESSAGE_READ);
+            assertNotNull(Telephony.CellBroadcasts.MESSAGE_FORMAT);
+            assertNotNull(Telephony.CellBroadcasts.MESSAGE_PRIORITY);
+            assertNotNull(Telephony.CellBroadcasts.ETWS_WARNING_TYPE);
+            assertNotNull(Telephony.CellBroadcasts.CMAS_MESSAGE_CLASS);
+            assertNotNull(Telephony.CellBroadcasts.CMAS_CATEGORY);
+            assertNotNull(Telephony.CellBroadcasts.CMAS_RESPONSE_TYPE);
+            assertNotNull(Telephony.CellBroadcasts.CMAS_SEVERITY);
+            assertNotNull(Telephony.CellBroadcasts.CMAS_URGENCY);
+            assertNotNull(Telephony.CellBroadcasts.CMAS_CERTAINTY);
+            assertNotNull(Telephony.CellBroadcasts.DEFAULT_SORT_ORDER);
+
+            assertNotNull(Telephony.CellBroadcasts.QUERY_COLUMNS);
+        } else {
+            assertNull(Telephony.CellBroadcasts._cls);
         }
     }
 

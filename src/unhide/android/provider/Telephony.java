@@ -582,8 +582,8 @@ public final class Telephony {
              * values:</p>
              *
              * <ul>
-             *   <li><em>pdus</em> - An Object[] of byte[]s containing the PDUs
-             *   that make up the message.</li>
+             *   <li><em>message</em> - An SmsCbMessage object containing the broadcast message
+             *   data. This is not an emergency alert, so ETWS and CMAS data will be null.</li>
              * </ul>
              *
              * <p>The extra values can be extracted using
@@ -600,8 +600,8 @@ public final class Telephony {
              * values:</p>
              *
              * <ul>
-             *   <li><em>pdus</em> - An Object[] of byte[]s containing the PDUs
-             *   that make up the message.</li>
+             *   <li><em>message</em> - An SmsCbMessage object containing the broadcast message
+             *   data, including ETWS or CMAS warning notification info if present.</li>
              * </ul>
              *
              * <p>The extra values can be extracted using
@@ -611,6 +611,24 @@ public final class Telephony {
              * this intent it should set the result code appropriately.</p>
              */
             public static final String SMS_EMERGENCY_CB_RECEIVED_ACTION = Reflector._String(_cls, "SMS_EMERGENCY_CB_RECEIVED_ACTION");
+
+            /**
+             * Broadcast Action: A new CDMA SMS has been received containing Service Category
+             * Program Data (updates the list of enabled broadcast channels). The intent will
+             * have the following extra values:</p>
+             *
+             * <ul>
+             *   <li><em>operations</em> - An array of CdmaSmsCbProgramData objects containing
+             *   the service category operations (add/delete/clear) to perform.</li>
+             * </ul>
+             *
+             * <p>The extra values can be extracted using
+             * {@link #getMessagesFromIntent(Intent)}.</p>
+             *
+             * <p>If a BroadcastReceiver encounters an error while processing
+             * this intent it should set the result code appropriately.</p>
+             */
+            public static final String SMS_SERVICE_CATEGORY_PROGRAM_DATA_RECEIVED_ACTION = Reflector._String(_cls, "SMS_SERVICE_CATEGORY_PROGRAM_DATA_RECEIVED_ACTION");
 
             /**
              * Broadcast Action: The SIM storage for SMS messages is full.  If
@@ -1753,6 +1771,162 @@ public final class Telephony {
           * but currently only used for LTE(14) and EHRPD(13).
           */
         public static final String BEARER = Reflector._String(_cls, "BEARER");
+
+    }
+
+    /**
+     * Contains received SMS cell broadcast messages.
+     */
+    public static final class CellBroadcasts implements BaseColumns {
+
+        public static final Class<?> _cls = Reflector._class("android.provider.Telephony$CellBroadcasts");
+
+        /** Not instantiable. */
+        private CellBroadcasts() {}
+
+        /**
+         * The content:// style URL for this table
+         */
+        public static final Uri CONTENT_URI = Reflector._Uri(_cls, "CONTENT_URI");
+
+        /**
+         * Message geographical scope.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String GEOGRAPHICAL_SCOPE = Reflector._String(_cls, "GEOGRAPHICAL_SCOPE");
+
+        /**
+         * Message serial number.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String SERIAL_NUMBER = Reflector._String(_cls, "SERIAL_NUMBER");
+
+        /**
+         * PLMN of broadcast sender. (SERIAL_NUMBER + PLMN + LAC + CID) uniquely identifies a
+         * broadcast for duplicate detection purposes.
+         * <P>Type: TEXT</P>
+         */
+        public static final String PLMN = Reflector._String(_cls, "PLMN");
+
+        /**
+         * Location Area (GSM) or Service Area (UMTS) of broadcast sender. Unused for CDMA.
+         * Only included if Geographical Scope of message is not PLMN wide (01).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String LAC = Reflector._String(_cls, "LAC");
+
+        /**
+         * Cell ID of message sender (GSM/UMTS). Unused for CDMA. Only included when the
+         * Geographical Scope of message is cell wide (00 or 11).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String CID = Reflector._String(_cls, "CID");
+
+        /**
+         * Message code (OBSOLETE: merged into SERIAL_NUMBER).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String V1_MESSAGE_CODE = Reflector._String(_cls, "V1_MESSAGE_CODE");
+
+        /**
+         * Message identifier (OBSOLETE: renamed to SERVICE_CATEGORY).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String V1_MESSAGE_IDENTIFIER = Reflector._String(_cls, "V1_MESSAGE_IDENTIFIER");
+
+        /**
+         * Service category (GSM/UMTS message identifier, CDMA service category).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String SERVICE_CATEGORY = Reflector._String(_cls, "SERVICE_CATEGORY");
+
+        /**
+         * Message language code.
+         * <P>Type: TEXT</P>
+         */
+        public static final String LANGUAGE_CODE = Reflector._String(_cls, "LANGUAGE_CODE");
+
+        /**
+         * Message body.
+         * <P>Type: TEXT</P>
+         */
+        public static final String MESSAGE_BODY = Reflector._String(_cls, "MESSAGE_BODY");
+
+        /**
+         * Message delivery time.
+         * <P>Type: INTEGER (long)</P>
+         */
+        public static final String DELIVERY_TIME = Reflector._String(_cls, "DELIVERY_TIME");
+
+        /**
+         * Has the message been viewed?
+         * <P>Type: INTEGER (boolean)</P>
+         */
+        public static final String MESSAGE_READ = Reflector._String(_cls, "MESSAGE_READ");
+
+        /**
+         * Message format (3GPP or 3GPP2).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String MESSAGE_FORMAT = Reflector._String(_cls, "MESSAGE_FORMAT");
+
+        /**
+         * Message priority (including emergency).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String MESSAGE_PRIORITY = Reflector._String(_cls, "MESSAGE_PRIORITY");
+
+        /**
+         * ETWS warning type (ETWS alerts only).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String ETWS_WARNING_TYPE = Reflector._String(_cls, "ETWS_WARNING_TYPE");
+
+        /**
+         * CMAS message class (CMAS alerts only).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String CMAS_MESSAGE_CLASS = Reflector._String(_cls, "CMAS_MESSAGE_CLASS");
+
+        /**
+         * CMAS category (CMAS alerts only).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String CMAS_CATEGORY = Reflector._String(_cls, "CMAS_CATEGORY");
+
+        /**
+         * CMAS response type (CMAS alerts only).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String CMAS_RESPONSE_TYPE = Reflector._String(_cls, "CMAS_RESPONSE_TYPE");
+
+        /**
+         * CMAS severity (CMAS alerts only).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String CMAS_SEVERITY = Reflector._String(_cls, "CMAS_SEVERITY");
+
+        /**
+         * CMAS urgency (CMAS alerts only).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String CMAS_URGENCY = Reflector._String(_cls, "CMAS_URGENCY");
+
+        /**
+         * CMAS certainty (CMAS alerts only).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String CMAS_CERTAINTY = Reflector._String(_cls, "CMAS_CERTAINTY");
+
+        /**
+         * The default sort order for this table
+         */
+        public static final String DEFAULT_SORT_ORDER = Reflector._String(_cls, "DEFAULT_SORT_ORDER");
+
+        /**
+         * Query columns for instantiating {@link android.telephony.CellBroadcastMessage} objects.
+         */
+        public static final String[] QUERY_COLUMNS = Reflector._fieldValueAsType(String[].class, _cls, "QUERY_COLUMNS");
 
     }
 

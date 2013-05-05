@@ -26,6 +26,7 @@ import android.telephony.SmsMessage;
 
 import java.lang.reflect.Method;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import unhide.Reflector;
 
@@ -1233,6 +1234,336 @@ public final class Telephony {
             return Reflector._invokeStaticUnchecked(Long.class, _getOrCreateThreadId_Set, context, recipients);
         }
         public static final Method _getOrCreateThreadId_Set = Reflector._method(_cls, "getOrCreateThreadId", Context.class, Set.class);
+    }
+
+    /**
+     * Contains all MMS messages.
+     */
+    public static final class Mms implements BaseMmsColumns {
+
+        public static final Class<?> _cls = Reflector._class("android.provider.Telephony$Mms");
+
+        /**
+         * The content:// style URL for this table
+         */
+        public static final Uri CONTENT_URI = Reflector._Uri(_cls, "CONTENT_URI");
+
+        public static final Uri REPORT_REQUEST_URI = Reflector._Uri(_cls, "REPORT_REQUEST_URI");
+
+        public static final Uri REPORT_STATUS_URI = Reflector._Uri(_cls, "REPORT_STATUS_URI");
+
+        /**
+         * The default sort order for this table
+         */
+        public static final String DEFAULT_SORT_ORDER = Reflector._String(_cls, "DEFAULT_SORT_ORDER");
+
+        /**
+         * mailbox         =       name-addr
+         * name-addr       =       [display-name] angle-addr
+         * angle-addr      =       [CFWS] "<" addr-spec ">" [CFWS]
+         */
+        public static final Pattern NAME_ADDR_EMAIL_PATTERN = Reflector._fieldValueAsType(Pattern.class, _cls, "NAME_ADDR_EMAIL_PATTERN");
+
+        /**
+         * quoted-string   =       [CFWS]
+         *                         DQUOTE *([FWS] qcontent) [FWS] DQUOTE
+         *                         [CFWS]
+         */
+        public static final Pattern QUOTED_STRING_PATTERN = Reflector._fieldValueAsType(Pattern.class, _cls, "QUOTED_STRING_PATTERN");
+
+        public static final Cursor query(
+                ContentResolver cr, String[] projection) {
+            return Reflector._invokeStaticUnchecked(Cursor.class, _query_2,
+                    cr, projection);
+        }
+        public static final Method _query_2 = Reflector._method(_cls, "query", ContentResolver.class, String[].class);
+
+        public static final Cursor query(
+                ContentResolver cr, String[] projection,
+                String where, String orderBy) {
+            return Reflector._invokeStaticUnchecked(Cursor.class, _query_4,
+                    cr, projection);
+        }
+        public static final Method _query_4 = Reflector._method(_cls, "query", ContentResolver.class, String[].class,
+                String.class, String.class);
+
+        public static final String getMessageBoxName(int msgBox) {
+            return Reflector._invokeStaticUnchecked(String.class, _getMessageBoxName, msgBox);
+        }
+        public static final Method _getMessageBoxName = Reflector._method(_cls, "getMessageBoxName", int.class);
+
+        public static String extractAddrSpec(String address) {
+            return Reflector._invokeStaticUnchecked(String.class, _extractAddrSpec, address);
+        }
+        public static final Method _extractAddrSpec = Reflector._method(_cls, "extractAddrSpec", String.class);
+
+        /**
+         * Returns true if the address is an email address
+         *
+         * @param address the input address to be tested
+         * @return true if address is an email address
+         */
+        public static boolean isEmailAddress(String address) {
+            return Reflector._invokeStaticUnchecked(Boolean.class, _isEmailAddress, address);
+        }
+        public static final Method _isEmailAddress = Reflector._method(_cls, "isEmailAddress", String.class);
+
+        /**
+         * Returns true if the number is a Phone number
+         *
+         * @param number the input number to be tested
+         * @return true if number is a Phone number
+         */
+        public static boolean isPhoneNumber(String number) {
+            return Reflector._invokeStaticUnchecked(Boolean.class, _isPhoneNumber, number);
+        }
+        public static final Method _isPhoneNumber = Reflector._method(_cls, "isPhoneNumber", String.class);
+
+        /**
+         * Contains all MMS messages in the MMS app's inbox.
+         */
+        public static final class Inbox implements BaseMmsColumns {
+
+            public static final Class<?> _cls = Reflector._class("android.provider.Telephony$Mms$Inbox");
+
+            /**
+             * The content:// style URL for this table
+             */
+            public static final Uri CONTENT_URI = Reflector._Uri(_cls, "CONTENT_URI");
+
+            /**
+             * The default sort order for this table
+             */
+            public static final String DEFAULT_SORT_ORDER = Reflector._String(_cls, "DEFAULT_SORT_ORDER");
+
+        }
+
+        /**
+         * Contains all MMS messages in the MMS app's sent box.
+         */
+        public static final class Sent implements BaseMmsColumns {
+
+            public static final Class<?> _cls = Reflector._class("android.provider.Telephony$Mms$Sent");
+
+            /**
+             * The content:// style URL for this table
+             */
+            public static final Uri CONTENT_URI = Reflector._Uri(_cls, "CONTENT_URI");
+
+            /**
+             * The default sort order for this table
+             */
+            public static final String DEFAULT_SORT_ORDER = Reflector._String(_cls, "DEFAULT_SORT_ORDER");
+
+        }
+
+        /**
+         * Contains all MMS messages in the MMS app's drafts box.
+         */
+        public static final class Draft implements BaseMmsColumns {
+
+            public static final Class<?> _cls = Reflector._class("android.provider.Telephony$Mms$Draft");
+
+            /**
+             * The content:// style URL for this table
+             */
+            public static final Uri CONTENT_URI = Reflector._Uri(_cls, "CONTENT_URI");
+
+            /**
+             * The default sort order for this table
+             */
+            public static final String DEFAULT_SORT_ORDER = Reflector._String(_cls, "DEFAULT_SORT_ORDER");
+
+        }
+
+        /**
+         * Contains all MMS messages in the MMS app's outbox.
+         */
+        public static final class Outbox implements BaseMmsColumns {
+
+            public static final Class<?> _cls = Reflector._class("android.provider.Telephony$Mms$Outbox");
+
+            /**
+             * The content:// style URL for this table
+             */
+            public static final Uri CONTENT_URI = Reflector._Uri(_cls, "CONTENT_URI");
+
+            /**
+             * The default sort order for this table
+             */
+            public static final String DEFAULT_SORT_ORDER = Reflector._String(_cls, "DEFAULT_SORT_ORDER");
+
+        }
+
+        public static final class Addr implements BaseColumns {
+
+            public static final Class<?> _cls = Reflector._class("android.provider.Telephony$Mms$Addr");
+
+            /**
+             * The ID of MM which this address entry belongs to.
+             */
+            public static final String MSG_ID = Reflector._String(_cls, "MSG_ID");
+
+            /**
+             * The ID of contact entry in Phone Book.
+             */
+            public static final String CONTACT_ID = Reflector._String(_cls, "CONTACT_ID");
+
+            /**
+             * The address text.
+             */
+            public static final String ADDRESS = Reflector._String(_cls, "ADDRESS");
+
+            /**
+             * Type of address, must be one of PduHeaders.BCC,
+             * PduHeaders.CC, PduHeaders.FROM, PduHeaders.TO.
+             */
+            public static final String TYPE = Reflector._String(_cls, "TYPE");
+
+            /**
+             * Character set of this entry.
+             */
+            public static final String CHARSET = Reflector._String(_cls, "CHARSET");
+
+        }
+
+        public static final class Part implements BaseColumns {
+
+            public static final Class<?> _cls = Reflector._class("android.provider.Telephony$Mms$Part");
+
+            /**
+             * The identifier of the message which this part belongs to.
+             * <P>Type: INTEGER</P>
+             */
+            public static final String MSG_ID = Reflector._String(_cls, "MSG_ID");
+
+            /**
+             * The order of the part.
+             * <P>Type: INTEGER</P>
+             */
+            public static final String SEQ = Reflector._String(_cls, "SEQ");
+
+            /**
+             * The content type of the part.
+             * <P>Type: TEXT</P>
+             */
+            public static final String CONTENT_TYPE = Reflector._String(_cls, "CONTENT_TYPE");
+
+            /**
+             * The name of the part.
+             * <P>Type: TEXT</P>
+             */
+            public static final String NAME = Reflector._String(_cls, "NAME");
+
+            /**
+             * The charset of the part.
+             * <P>Type: TEXT</P>
+             */
+            public static final String CHARSET = Reflector._String(_cls, "CHARSET");
+
+            /**
+             * The file name of the part.
+             * <P>Type: TEXT</P>
+             */
+            public static final String FILENAME = Reflector._String(_cls, "FILENAME");
+
+            /**
+             * The content disposition of the part.
+             * <P>Type: TEXT</P>
+             */
+            public static final String CONTENT_DISPOSITION = Reflector._String(_cls, "CONTENT_DISPOSITION");
+
+            /**
+             * The content ID of the part.
+             * <P>Type: INTEGER</P>
+             */
+            public static final String CONTENT_ID = Reflector._String(_cls, "CONTENT_ID");
+
+            /**
+             * The content location of the part.
+             * <P>Type: INTEGER</P>
+             */
+            public static final String CONTENT_LOCATION = Reflector._String(_cls, "CONTENT_LOCATION");
+
+            /**
+             * The start of content-type of the message.
+             * <P>Type: INTEGER</P>
+             */
+            public static final String CT_START = Reflector._String(_cls, "CT_START");
+
+            /**
+             * The type of content-type of the message.
+             * <P>Type: TEXT</P>
+             */
+            public static final String CT_TYPE = Reflector._String(_cls, "CT_TYPE");
+
+            /**
+             * The location(on filesystem) of the binary data of the part.
+             * <P>Type: INTEGER</P>
+             */
+            public static final String _DATA = Reflector._String(_cls, "_DATA");
+
+            public static final String TEXT = Reflector._String(_cls, "TEXT");
+
+        }
+
+        public static final class Rate {
+
+            public static final Class<?> _cls = Reflector._class("android.provider.Telephony$Mms$Rate");
+
+            public static final Uri CONTENT_URI = Reflector._Uri(_cls, "CONTENT_URI");
+
+            /**
+             * When a message was successfully sent.
+             * <P>Type: INTEGER</P>
+             */
+            public static final String SENT_TIME = Reflector._String(_cls, "SENT_TIME");
+
+        }
+
+        public static final class Intents {
+
+            public static final Class<?> _cls = Reflector._class("android.provider.Telephony$Mms$Intents");
+
+            private Intents() {
+                // Non-instantiatable.
+            }
+
+            /**
+             * The extra field to store the contents of the Intent,
+             * which should be an array of Uri.
+             */
+            public static final String EXTRA_CONTENTS = Reflector._String(_cls, "EXTRA_CONTENTS");
+            /**
+             * The extra field to store the type of the contents,
+             * which should be an array of String.
+             */
+            public static final String EXTRA_TYPES    = Reflector._String(_cls, "EXTRA_TYPES");
+            /**
+             * The extra field to store the 'Cc' addresses.
+             */
+            public static final String EXTRA_CC       = Reflector._String(_cls, "EXTRA_CC");
+            /**
+             * The extra field to store the 'Bcc' addresses;
+             */
+            public static final String EXTRA_BCC      = Reflector._String(_cls, "EXTRA_BCC");
+            /**
+             * The extra field to store the 'Subject'.
+             */
+            public static final String EXTRA_SUBJECT  = Reflector._String(_cls, "EXTRA_SUBJECT");
+            /**
+             * Indicates that the contents of specified URIs were changed.
+             * The application which is showing or caching these contents
+             * should be updated.
+             */
+            public static final String CONTENT_CHANGED_ACTION = Reflector._String(_cls, "CONTENT_CHANGED_ACTION");
+            /**
+             * An extra field which stores the URI of deleted contents.
+             */
+            public static final String DELETED_CONTENTS = Reflector._String(_cls, "DELETED_CONTENTS");
+
+        }
+
     }
 
 }

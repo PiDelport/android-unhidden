@@ -274,4 +274,131 @@ public class TelephonyTest extends TestCase {
         assertNotNull(Telephony.Threads._getOrCreateThreadId_Set);
     }
 
+    public void testMms() {
+        assertNotNull(Telephony.Mms._cls);
+
+        assertNotNull(Telephony.Mms.CONTENT_URI);
+        assertNotNull(Telephony.Mms.REPORT_REQUEST_URI);
+        assertNotNull(Telephony.Mms.REPORT_STATUS_URI);
+        assertNotNull(Telephony.Mms.DEFAULT_SORT_ORDER);
+
+        assertNotNull(Telephony.Mms.NAME_ADDR_EMAIL_PATTERN);
+        assertNotNull(Telephony.Mms.QUOTED_STRING_PATTERN);
+    }
+
+    public void testMms_query() {
+        // TODO: Test these with a ContentResolver.
+        assertNotNull(Telephony.Mms._query_2);
+        assertNotNull(Telephony.Mms._query_4);
+    }
+
+    public void testMms_getMessageBoxName() {
+        assertNotNull(Telephony.Mms._getMessageBoxName);
+
+        assertNotNull(Telephony.Mms.getMessageBoxName(Telephony.Mms.MESSAGE_BOX_ALL));
+        assertNotNull(Telephony.Mms.getMessageBoxName(Telephony.Mms.MESSAGE_BOX_INBOX));
+        assertNotNull(Telephony.Mms.getMessageBoxName(Telephony.Mms.MESSAGE_BOX_SENT));
+        assertNotNull(Telephony.Mms.getMessageBoxName(Telephony.Mms.MESSAGE_BOX_DRAFTS));
+        assertNotNull(Telephony.Mms.getMessageBoxName(Telephony.Mms.MESSAGE_BOX_OUTBOX));
+    }
+
+    public void testMms_extractAddrSpec() {
+        assertNotNull(Telephony.Mms._extractAddrSpec);
+
+        assertEquals("", Telephony.Mms.extractAddrSpec(""));
+        assertEquals("spam@example.com", Telephony.Mms.extractAddrSpec("Spam <spam@example.com>"));
+    }
+
+    public void testMms_isEmailAddress() {
+        assertNotNull(Telephony.Mms._isEmailAddress);
+
+        assertFalse(Telephony.Mms.isEmailAddress(null));
+        assertFalse(Telephony.Mms.isEmailAddress(""));
+        assertTrue(Telephony.Mms.isEmailAddress("spam@example.com"));
+    }
+
+    public void testMms_isPhoneNumber() {
+        assertNotNull(Telephony.Mms._isPhoneNumber);
+
+        assertFalse(Telephony.Mms.isPhoneNumber(null));
+        assertFalse(Telephony.Mms.isPhoneNumber(""));
+        assertFalse(Telephony.Mms.isPhoneNumber("spam"));
+        assertTrue(Telephony.Mms.isPhoneNumber("+1234567890"));
+    }
+
+    public void testMmsInbox() {
+        assertNotNull(Telephony.Mms.Inbox._cls);
+
+        assertNotNull(Telephony.Mms.Inbox.CONTENT_URI);
+        assertNotNull(Telephony.Mms.Inbox.DEFAULT_SORT_ORDER);
+    }
+
+    public void testMmsSent() {
+        assertNotNull(Telephony.Mms.Sent._cls);
+
+        assertNotNull(Telephony.Mms.Inbox.CONTENT_URI);
+        assertNotNull(Telephony.Mms.Inbox.DEFAULT_SORT_ORDER);
+    }
+
+    public void testMmsDraft() {
+        assertNotNull(Telephony.Mms.Draft._cls);
+
+        assertNotNull(Telephony.Mms.Inbox.CONTENT_URI);
+        assertNotNull(Telephony.Mms.Inbox.DEFAULT_SORT_ORDER);
+    }
+
+    public void testMmsOutbox() {
+        assertNotNull(Telephony.Mms.Outbox._cls);
+
+        assertNotNull(Telephony.Mms.Inbox.CONTENT_URI);
+        assertNotNull(Telephony.Mms.Inbox.DEFAULT_SORT_ORDER);
+    }
+
+    public void testMmsAddr() {
+        assertNotNull(Telephony.Mms.Addr._cls);
+
+        assertNotNull(Telephony.Mms.Addr.MSG_ID);
+        assertNotNull(Telephony.Mms.Addr.CONTACT_ID);
+        assertNotNull(Telephony.Mms.Addr.ADDRESS);
+        assertNotNull(Telephony.Mms.Addr.TYPE);
+        assertNotNull(Telephony.Mms.Addr.CHARSET);
+    }
+
+    public void testMmsPart() {
+        assertNotNull(Telephony.Mms.Part._cls);
+
+        assertNotNull(Telephony.Mms.Part.MSG_ID);
+        assertNotNull(Telephony.Mms.Part.SEQ);
+        assertNotNull(Telephony.Mms.Part.CONTENT_TYPE);
+        assertNotNull(Telephony.Mms.Part.NAME);
+        assertNotNull(Telephony.Mms.Part.CHARSET);
+        assertNotNull(Telephony.Mms.Part.FILENAME);
+        assertNotNull(Telephony.Mms.Part.CONTENT_DISPOSITION);
+        assertNotNull(Telephony.Mms.Part.CONTENT_ID);
+        assertNotNull(Telephony.Mms.Part.CONTENT_LOCATION);
+        assertNotNull(Telephony.Mms.Part.CT_START);
+        assertNotNull(Telephony.Mms.Part.CT_TYPE);
+        assertNotNull(Telephony.Mms.Part._DATA);
+        assertNotNull(Telephony.Mms.Part.TEXT);
+    }
+
+    public void testMmsRate() {
+        assertNotNull(Telephony.Mms.Rate._cls);
+
+        assertNotNull(Telephony.Mms.Rate.CONTENT_URI);
+        assertNotNull(Telephony.Mms.Rate.SENT_TIME);
+    }
+
+    public void testMmsIntents() {
+        assertNotNull(Telephony.Mms.Intents._cls);
+
+        assertNotNull(Telephony.Mms.Intents.EXTRA_CONTENTS);
+        assertNotNull(Telephony.Mms.Intents.EXTRA_TYPES);
+        assertNotNull(Telephony.Mms.Intents.EXTRA_CC);
+        assertNotNull(Telephony.Mms.Intents.EXTRA_BCC);
+        assertNotNull(Telephony.Mms.Intents.EXTRA_SUBJECT);
+        assertNotNull(Telephony.Mms.Intents.CONTENT_CHANGED_ACTION);
+        assertNotNull(Telephony.Mms.Intents.DELETED_CONTENTS);
+    }
+
 }
